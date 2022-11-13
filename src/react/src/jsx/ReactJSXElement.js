@@ -25,7 +25,6 @@ function ReactElement(type, key, ref, props) {
 }
 
 export function jsxDEV(type, config, maybeKey) {
-  debugger;
   let propName;
   const props = {};
   let key = null;
