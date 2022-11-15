@@ -1,4 +1,4 @@
-import { HostRoot } from './ReactWorkTags';
+import { HostComponent, HostRoot, HostText, IndeterminateComponent } from './ReactWorkTags';
 import { NoFlags } from './ReactFiberFlags';
 
 /**
@@ -45,6 +45,7 @@ export function FiberNode(tag, pendingProps, key) {
   this.subtreeFlags = NoFlags;
   // 双缓冲技术: 用来存储替身结点(每个结点其实有2个Fiber结点在交替使用,节约内存)
   this.alternate = null;
+  this.index = 0;
 }
 
 export function createFiber(tag, pendingProps, key) {
@@ -81,4 +82,30 @@ export function createWorkInProgress(current, pendingProps) {
   workInProgress.sibling = current.sibling;
   workInProgress.index = current.index;
   return workInProgress;
+}
+
+function createFiberFromTypeAndProps(type, key, pendingProps) {
+  let fiberTag = IndeterminateComponent;
+  // 如果类型type是一个字符串(如: div,p,span),则说明Fiber类型是一个原生组件
+  if (typeof type === 'string') {
+    fiberTag = HostComponent;
+  }
+  const fiber = createFiber(fiberTag, pendingProps, key);
+  fiber.type = type;
+  return fiber;
+}
+
+/**
+ * 根据虚拟DOM创建Fiber结点
+ * @param {*} element
+ */
+export function createFiberFromElement(element) {
+  const { type, key, props: pendingProps } = element;
+  const fiber = createFiberFromTypeAndProps(type, key, pendingProps);
+  return fiber;
+}
+
+export function createFiberFromText(content) {
+  const fiber = createFiber(HostText, content, null);
+  return fiber;
 }

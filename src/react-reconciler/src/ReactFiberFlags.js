@@ -43,3 +43,15 @@ export const PassiveStatic = /*                */ 0b00010000000000000000000000;
 export const PlacementDEV = /*                 */ 0b00100000000000000000000000;
 export const MountLayoutDev = /*               */ 0b01000000000000000000000000;
 export const MountPassiveDev = /*              */ 0b10000000000000000000000000;
+
+export const MutationMask =
+  Placement | Update | ChildDeletion | ContentReset | Ref | Hydrating | Visibility;
+export const LayoutMask = Update | Callback | Ref | Visibility;
+
+// TODO: Split into PassiveMountMask and PassiveUnmountMask
+export const PassiveMask = Passive | Visibility | ChildDeletion;
+
+// Union of tags that don't get reset on clones.
+// This allows certain concepts to persist without recalculating them,
+// e.g. whether a subtree contains passive effects or portals.
+export const StaticMask = LayoutStatic | PassiveStatic | RefStatic;

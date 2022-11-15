@@ -20,7 +20,7 @@ function ReactElement(type, key, ref, props) {
     type,
     key,
     ref,
-    props,
+    props, // 其中包含一些特定属性: children,style,id等
   };
 }
 

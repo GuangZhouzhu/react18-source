@@ -1,0 +1,896 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1835px" height="2071px" viewBox="-0.5 -0.5 1835 2071" content="&lt;mxfile&gt;&lt;diagram id=&quot;hWKWII2t_w_m_oUZhFSG&quot; name=&quot;sequence&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <ellipse cx="17" cy="5" rx="8.5" ry="5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <path d="M 17 10 L 17 26.67 M 17 13.33 L 0 13.33 M 17 13.33 L 34 13.33 M 17 26.67 L 0 40 M 17 26.67 L 34 40" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 17 40 L 17 1390" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <rect x="120" y="0" width="120" height="40" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <path d="M 180 40 L 180 1390" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 20px; margin-left: 121px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                react
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="180" y="24" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    react
+                </text>
+            </switch>
+        </g>
+        <path d="M 180 629 L 210 629 L 210 649 L 193.12 649" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 186.12 649 L 193.12 645.5 L 193.12 652.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 637px; margin-left: 214px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                jsx():ReactElement
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="214" y="640" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    jsx():ReactElement
+                </text>
+            </switch>
+        </g>
+        <rect x="366.5" y="0" width="120" height="40" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <path d="M 426.5 40 L 426.5 1390" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 20px; margin-left: 368px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                react-dom
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="427" y="24" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    react-dom
+                </text>
+            </switch>
+        </g>
+        <path d="M 427 790 L 781.38 790" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 788.38 790 L 781.38 793.5 L 781.38 786.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 787px; margin-left: 608px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                updateContainer(element: ReactNode, container: OpaqueRoot)
+                                <span style="text-align: left">
+                                    : Lane
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="608" y="787" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    updateContainer...
+                </text>
+            </switch>
+        </g>
+        <path d="M 427 510 L 457 510 L 457 530 L 440.12 530" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 433.12 530 L 440.12 526.5 L 440.12 533.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 518px; margin-left: 461px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                new ReactDOMRoot(internalRoot: FiberRoot):
+                                <span style="text-align: center">
+                                    RootType/Root
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="461" y="521" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    new ReactDOMRoot(internalRoot: FiberRoot): RootType/Root
+                </text>
+            </switch>
+        </g>
+        <rect x="729" y="0" width="122" height="40" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <path d="M 790 40 L 790 2070" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 120px; height: 1px; padding-top: 20px; margin-left: 730px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                react-reconciler
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="790" y="24" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    react-reconciler
+                </text>
+            </switch>
+        </g>
+        <path d="M 788 830 L 818 830 L 818 850 L 801.12 850" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 794.12 850 L 801.12 846.5 L 801.12 853.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 838px; margin-left: 822px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createUpdate(eventTime: number, lane: Lane): Update
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="822" y="841" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createUpdate(eventTime: number, lane: Lane): Update
+                </text>
+            </switch>
+        </g>
+        <path d="M 791 990 L 821 990 L 821 1010 L 804.12 1010" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 797.12 1010 L 804.12 1006.5 L 804.12 1013.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 998px; margin-left: 825px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                scheduleUpdateOnFiber(root: FiberRoot, fiber: Fiber, lane: Lane, eventTime: number): void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="825" y="1001" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    scheduleUpdateOnFiber(root: FiberRoot, fiber: Fiber, lane: Lane, eventTime: number): void
+                </text>
+            </switch>
+        </g>
+        <path d="M 821 1010 L 851 1010 L 851 1030 L 834.12 1030" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 827.12 1030 L 834.12 1026.5 L 834.12 1033.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1018px; margin-left: 855px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                ensureRootIsScheduled(root: FiberRoot, currentTime: number): void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="855" y="1021" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    ensureRootIsScheduled(root: FiberRoot, currentTime: number): void
+                </text>
+            </switch>
+        </g>
+        <path d="M 791 1150 L 821 1150 L 821 1190 L 796 1190 L 799.12 1190" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 792.12 1190 L 799.12 1186.5 L 799.12 1193.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1170px; margin-left: 825px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                performConcurrentWorkOnRoot(root: FiberRoot, didTimeout: number): void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="825" y="1173" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    performConcurrentWorkOnRoot(root: FiberRoot, didTimeout: number): void
+                </text>
+            </switch>
+        </g>
+        <path d="M 821 1190 L 851 1190 L 851 1210 L 834.12 1210" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 827.12 1210 L 834.12 1206.5 L 834.12 1213.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1197px; margin-left: 855px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                renderRootSync(root: FiberRoot, lanes: Lanes): RootExitStatus
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="855" y="1200" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    renderRootSync(root: FiberRoot, lanes: Lanes): RootExitStatus
+                </text>
+            </switch>
+        </g>
+        <path d="M 851 1278 L 881 1278 L 881 1298 L 864.12 1298" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 857.12 1298 L 864.12 1294.5 L 864.12 1301.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1286px; margin-left: 885px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                workLoopSync(): void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="885" y="1289" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    workLoopSync(): void
+                </text>
+            </switch>
+        </g>
+        <path d="M 880.97 1298 L 911 1298 L 911 1318 L 898.12 1318" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 891.12 1318 L 898.12 1314.5 L 898.12 1321.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1304px; margin-left: 915px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                performUnitOfWork(unitOfWork: Fiber): void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="915" y="1307" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    performUnitOfWork(unitOfWork: Fiber): void
+                </text>
+            </switch>
+        </g>
+        <path d="M 788 230 L 818 230 L 818 250 L 801.12 250" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 794.12 250 L 801.12 246.5 L 801.12 253.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 238px; margin-left: 822px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createFiberRoot(containerInfo: Container): FiberRoot
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="822" y="241" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createFiberRoot(containerInfo: Container): FiberRoot
+                </text>
+            </switch>
+        </g>
+        <path d="M 818 250 L 848 250 L 848 270 L 831.12 270" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 824.12 270 L 831.12 266.5 L 831.12 273.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 258px; margin-left: 852px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                new FiberRootNode(containerInfo: Container): FiberRoot
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="852" y="261" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    new FiberRootNode(containerInfo: Container): FiberRoot
+                </text>
+            </switch>
+        </g>
+        <path d="M 818 280 L 848 280 L 848 300 L 831.12 300" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 824.12 300 L 831.12 296.5 L 831.12 303.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 288px; margin-left: 852px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createHostRootFiber(tag: RootTag): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="852" y="291" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createHostRootFiber(tag: RootTag): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 818 330 L 848 330 L 848 350 L 831.12 350" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 824.12 350 L 831.12 346.5 L 831.12 353.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 338px; margin-left: 852px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                initializeUpdateQueue(fiber: Fiber):void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="852" y="341" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    initializeUpdateQueue(fiber: Fiber):void
+                </text>
+            </switch>
+        </g>
+        <path d="M 790 870 L 820 870 L 820 890 L 803.12 890" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 796.12 890 L 803.12 886.5 L 803.12 893.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 878px; margin-left: 824px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                enqueue(fiber: Fiber, update: Update, lane: Lane): FiberRoot | null
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="824" y="881" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    enqueue(fiber: Fiber, update: Update, lane: Lane): FiberRoot | null
+                </text>
+            </switch>
+        </g>
+        <path d="M 821 890 L 851 890 L 851 910 L 834.12 910" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 827.12 910 L 834.12 906.5 L 834.12 913.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 898px; margin-left: 855px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                markUpdateLaneFromFiberToRoot(sourceFiber: Fiber, lane: Lane): FiberRoot | null
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="855" y="901" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    markUpdateLaneFromFiberToRoot(sourceFiber: Fiber, lane: Lane): FiberRoot | null
+                </text>
+            </switch>
+        </g>
+        <rect x="1627" y="0" width="120" height="40" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <path d="M 1687 40 L 1687 2070" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 20px; margin-left: 1628px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                scheduler
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1687" y="24" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    scheduler
+                </text>
+            </switch>
+        </g>
+        <path d="M 20 110 L 417.88 110" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 424.88 110 L 417.88 113.5 L 417.88 106.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 107px; margin-left: 223px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createRoot(container: Element, options?: CreateRootOptions):RootType/Root
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="223" y="107" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    createRoot(cont...
+                </text>
+            </switch>
+        </g>
+        <path d="M 426.33 150 L 781.38 150" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 788.38 150 L 781.38 153.5 L 781.38 146.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 147px; margin-left: 608px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createContainer(containerInfo: Container):OpaqueRoot
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="608" y="147" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    createContainer...
+                </text>
+            </switch>
+        </g>
+        <path d="M 789.5 468 L 432.24 468" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+        <path d="M 440.12 463.5 L 431.12 468 L 440.12 472.5" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 465px; margin-left: 610px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                FiberRoot(=OpaqueRoot)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="610" y="465" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    FiberRoot(=OpaqueRoot)
+                </text>
+            </switch>
+        </g>
+        <path d="M 426 588 L 19.05 588" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+        <path d="M 26.93 583.5 L 17.93 588 L 26.93 592.5" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 585px; margin-left: 221px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                RootType/Root
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="221" y="585" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    RootType/Root
+                </text>
+            </switch>
+        </g>
+        <path d="M 16.81 708 L 417.88 708" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 424.88 708 L 417.88 711.5 L 417.88 704.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 705px; margin-left: 222px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Root.render(children: ReactNode/ReactNodeList):void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="222" y="705" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    Root.render(chi...
+                </text>
+            </switch>
+        </g>
+        <path d="M 788.83 1109 L 1678.38 1109" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1685.38 1109 L 1678.38 1112.5 L 1678.38 1105.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1106px; margin-left: 1238px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                unstable_scheduleCallback(priorityLevel: PriorityLevel, callback: Callback, options?: {delay:number}): Task
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1238" y="1106" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    unstable_schedu...
+                </text>
+            </switch>
+        </g>
+        <path d="M 1686.5 1148.85 L 791.63 1148.85" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+        <path d="M 799.51 1144.35 L 790.51 1148.85 L 799.51 1153.35" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1146px; margin-left: 1238px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                适当的时机执行callback
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1238" y="1146" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    适当的时机执行callback
+                </text>
+            </switch>
+        </g>
+        <path d="M 911 1318 L 941 1318 L 941 1338 L 924.12 1338" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 917.12 1338 L 924.12 1334.5 L 924.12 1341.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1326px; margin-left: 945px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                beginWork(current: Fiber, workInProgress: Fiber, renderLanes: Lanes): Fiber | null
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="945" y="1329" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    beginWork(current: Fiber, workInProgress: Fiber, renderLanes: Lanes): Fiber | null
+                </text>
+            </switch>
+        </g>
+        <path d="M 941 1338 L 971 1338 L 971 1358 L 954.12 1358" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 947.12 1358 L 954.12 1354.5 L 954.12 1361.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1346px; margin-left: 975px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                updateHostRoot(current: Fiber, workInProgress: Fiber, renderLanes: Lanes): Fiber | null
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="975" y="1349" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    updateHostRoot(current: Fiber, workInProgress: Fiber, renderLanes: Lanes): Fiber | null
+                </text>
+            </switch>
+        </g>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1348px; margin-left: 956px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                switch
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="956" y="1351" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    switch
+                </text>
+            </switch>
+        </g>
+        <path d="M 971 1358 L 1001 1358 L 1001 1378 L 984.12 1378" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 977.12 1378 L 984.12 1374.5 L 984.12 1381.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1366px; margin-left: 1005px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                processUpdateQueue(workInProgress: Fiber, props: any, instance: any, renderLanes: Lanes): void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1005" y="1369" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    processUpdateQueue(workInProgress: Fiber, props: any, instance: any, renderLanes: Lanes): void
+                </text>
+            </switch>
+        </g>
+        <path d="M 1001 1378 L 1031 1378 L 1031 1400 L 1009.12 1400" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1002.12 1400 L 1009.12 1396.5 L 1009.12 1403.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1389px; margin-left: 1035px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                getStateFromUpdate(workInProgress: Fiber,queue: UpdateQueue,update:Update,prevState:State,nextProps:any,instance:any):any
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1035" y="1392" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    getStateFromUpdate(workInProgress: Fiber,queue: UpdateQueue,update:Update,prevState:State,nextProps:any,instance:any):any
+                </text>
+            </switch>
+        </g>
+        <path d="M 971 1400 L 1001 1400 L 1001 1430 L 979.12 1430" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 972.12 1430 L 979.12 1426.5 L 979.12 1433.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1415px; margin-left: 1005px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                reconcileChildren(current: Fiber | null, workInProgress: Fiber, nextChildren: any, renderLanes: Lanes): void
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1005" y="1418" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    reconcileChildren(current: Fiber | null, workInProgress: Fiber, nextChildren: any, renderLanes: Lanes): void
+                </text>
+            </switch>
+        </g>
+        <path d="M 1001 1430 L 1031 1430 L 1031 1460 L 1009.12 1460" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1002.12 1460 L 1009.12 1456.5 L 1009.12 1463.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1445px; margin-left: 1035px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                mountChildFibers(returnFiber: Fiber, currentFirstChild: Fiber | null, newChild: any, lanes: Lanes): Fiber | null
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1035" y="1448" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    mountChildFibers(returnFiber: Fiber, currentFirstChild: Fiber | null, newChild: any, lanes: Lanes): Fiber | null
+                </text>
+            </switch>
+        </g>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1451px; margin-left: 1012px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                switch
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1012" y="1454" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    switch
+                </text>
+            </switch>
+        </g>
+        <path d="M 1001 1470 L 1031 1470 L 1031 1500 L 1009.12 1500" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1002.12 1500 L 1009.12 1496.5 L 1009.12 1503.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1485px; margin-left: 1035px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                reconcileChildrenFibers(returnFiber: Fiber, currentFirstChild: Fiber | null, newChild: any, lanes: Lanes): Fiber | null
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1035" y="1488" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    reconcileChildrenFibers(returnFiber: Fiber, currentFirstChild: Fiber | null, newChild: any, lanes: Lanes): Fiber | null
+                </text>
+            </switch>
+        </g>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1491px; margin-left: 1012px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                switch
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1012" y="1494" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    switch
+                </text>
+            </switch>
+        </g>
+        <path d="M 1031 1500 L 1061 1500 L 1061 1520 L 1044.12 1520" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1037.12 1520 L 1044.12 1516.5 L 1044.12 1523.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1508px; margin-left: 1065px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                reconcileChildFibers(returnFiber: Fiber, currentFirstChild: Fiber | null, newChild: any, lanes: Lanes): Fiber | null
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1065" y="1511" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    reconcileChildFibers(returnFiber: Fiber, currentFirstChild: Fiber | null, newChild: any, lanes: Lanes): Fiber | null
+                </text>
+            </switch>
+        </g>
+        <path d="M 1061 1520 L 1091 1520 L 1091 1540 L 1074.12 1540" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1067.12 1540 L 1074.12 1536.5 L 1074.12 1543.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1528px; margin-left: 1095px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                reconcileSingleElement(returnFiber: Fiber, currentFirstChild: Fiber | null, element: ReactElement, lanes: Lanes): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1095" y="1531" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    reconcileSingleElement(returnFiber: Fiber, currentFirstChild: Fiber | null, element: ReactElement, lanes: Lanes): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 1091 1540 L 1121 1540 L 1121 1560 L 1104.12 1560" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1097.12 1560 L 1104.12 1556.5 L 1104.12 1563.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1548px; margin-left: 1125px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createFiberFromElement(element: ReactElement, mode: TypeOfMode, lanes: Lanes): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1125" y="1551" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createFiberFromElement(element: ReactElement, mode: TypeOfMode, lanes: Lanes): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 1121 1560 L 1151 1560 L 1151 1580 L 1134.12 1580" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1127.12 1580 L 1134.12 1576.5 L 1134.12 1583.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1568px; margin-left: 1155px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createFiberFromTypeAndProps(type: any, key: null | string, pendingProps: any, owner: null | Fiber, mode: TypeOfMode, lanes: Lanes): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1155" y="1571" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createFiberFromTypeAndProps(type: any, key: null | string, pendingProps: any, owner: null | Fiber, mode: TypeOfMode, lanes: Lanes): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 1151 1580 L 1181 1580 L 1181 1600 L 1164.12 1600" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1157.12 1600 L 1164.12 1596.5 L 1164.12 1603.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1588px; margin-left: 1185px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createFiber(tag: WorkTag, pendingProps: any, key: null | string, mode: TypeOfMode): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1185" y="1591" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createFiber(tag: WorkTag, pendingProps: any, key: null | string, mode: TypeOfMode): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 1061 1604 L 1091 1604 L 1091 1624 L 1074.12 1624" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1067.12 1624 L 1074.12 1620.5 L 1074.12 1627.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1612px; margin-left: 1095px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                placeSingleChild(newFiber: Fiber): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1095" y="1615" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    placeSingleChild(newFiber: Fiber): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 941 1640 L 971 1640 L 971 1660 L 954.12 1660" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 947.12 1660 L 954.12 1656.5 L 954.12 1663.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1648px; margin-left: 975px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                updateHostComponent(current: Fiber, workInProgress: Fiber, renderLanes: Lanes): Fiber | null
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="975" y="1651" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    updateHostComponent(current: Fiber, workInProgress: Fiber, renderLanes: Lanes): Fiber | null
+                </text>
+            </switch>
+        </g>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1649px; margin-left: 952px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                switch
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="952" y="1652" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    switch
+                </text>
+            </switch>
+        </g>
+        <path d="M 848 300 L 878 300 L 878 320 L 861.12 320" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 854.12 320 L 861.12 316.5 L 861.12 323.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 308px; margin-left: 882px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createFiber(tag: WorkTag, pendingProps: any, key: null | string, mode: TypeOfMode): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="882" y="311" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createFiber(tag: WorkTag, pendingProps: any, key: null | string, mode: TypeOfMode): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 851 1210 L 881 1210 L 881 1230 L 864.12 1230" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 857.12 1230 L 864.12 1226.5 L 864.12 1233.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1218px; margin-left: 885px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                prepareFreshStack(root: FiberRoot, lanes: Lanes): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="885" y="1221" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    prepareFreshStack(root: FiberRoot, lanes: Lanes): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 880 1230 L 910 1230 L 910 1250 L 888.15 1250" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 881.15 1250 L 888.15 1246.5 L 888.15 1253.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1240px; margin-left: 914px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createWorkInProgress(current: Fiber, pendingProps: any): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="914" y="1243" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createWorkInProgress(current: Fiber, pendingProps: any): Fiber
+                </text>
+            </switch>
+        </g>
+        <path d="M 910 1250 L 940 1250 L 940 1270 L 918.15 1270" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 911.15 1270 L 918.15 1266.5 L 918.15 1273.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 1260px; margin-left: 944px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                createFiber(tag: WorkTag, pendingProps: any, key: null | string, mode: TypeOfMode): Fiber
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="944" y="1263" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    createFiber(tag: WorkTag, pendingProps: any, key: null | string, mode: TypeOfMode): Fiber
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
