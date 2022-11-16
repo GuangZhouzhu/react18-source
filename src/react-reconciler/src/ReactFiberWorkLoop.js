@@ -1,6 +1,7 @@
 import { scheduleCallback } from 'scheduler';
 import { createWorkInProgress } from './ReactFiber';
 import { beginWork } from './ReactFiberBeginWork';
+import { completeWork } from './ReactFiberCompleteWork';
 
 let workInProgress = null;
 
@@ -28,6 +29,7 @@ function ensureRootIsScheduled(root) {
 function performConcurrentWorkOnRoot(root) {
   // 以同步的方式渲染根节点(初次渲染时,都是同步的)
   renderRootSync(root);
+  console.log(root);
 }
 
 function prepareFreshStack(root) {
@@ -44,7 +46,7 @@ function workLoopSync() {
 }
 /**
  * 执行一个工作单元
- * @param {*} unitOfWork 
+ * @param {*} unitOfWork
  */
 function performUnitOfWork(unitOfWork) {
   // 获取对应的老Fiber
@@ -53,10 +55,27 @@ function performUnitOfWork(unitOfWork) {
   unitOfWork.memoizedProps = unitOfWork.pendingProps;
   if (next === null) {
     // 如果没有子结点了,则表示当期那的Fiber已经完成了
-    // completeUnitOfWork(unitOfWork);
-    workInProgress = null;
+    completeUnitOfWork(unitOfWork);
   } else {
     // 如果还有子结点,则让子结点成为下一个工作单元
     workInProgress = next;
   }
+}
+
+function completeUnitOfWork(unitOfWork) {
+  let completedWork = unitOfWork;
+  do {
+    const current = completedWork.alternate;
+    const returnFiber = completedWork.return;
+    completeWork(current, completedWork);
+    const siblingFiber = completedWork.sibling;
+    // 如果有弟弟,就构建弟弟对应的Fiber链表
+    if (siblingFiber !== null) {
+      workInProgress = siblingFiber;
+      return;
+    }
+    // 如果没有弟弟,说明当前完成的就是父Fiber的最后一个结点,即该父Fiber的所有子Fiber全都完成了
+    completedWork = returnFiber;
+    workInProgress = completedWork;
+  } while (completedWork !== null);
 }

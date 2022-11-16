@@ -1,4 +1,4 @@
-import logger from 'shared/logger';
+import logger, { indent } from 'shared/logger';
 import { HostRoot, HostComponent, HostText } from './ReactWorkTags';
 import { processUpdateQueue } from './ReactFiberClassUpdateQueue';
 import { mountChildFibers, reconcileChildrenFibers } from './ReactChildFiber';
@@ -57,7 +57,8 @@ function updateHostComponent(current, workInProgress) {
  * @returns
  */
 export function beginWork(current, workInProgress) {
-  logger('beginWork', workInProgress);
+  logger(' '.repeat(indent.number) + 'beginWork', workInProgress);
+  indent.number += 2;
   switch (workInProgress.tag) {
     case HostRoot: {
       return updateHostRoot(current, workInProgress);
