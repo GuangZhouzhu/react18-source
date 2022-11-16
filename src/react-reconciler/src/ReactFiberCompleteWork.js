@@ -21,7 +21,7 @@ function bubbleProperties(completedWork) {
 }
 
 /**
- * 把当前完成Fiber的所有子结点对应的真实DOM,都挂载到对应的父结点上
+ * 把当前完成Fiber的所有子结点对应的真实DOM,都挂载到对应的父DOM结点上
  * @param {*} parent 当前完成的Fiber的真实DOM结点
  * @param {*} workInProgress 当前完成的Fiber
  */
@@ -38,6 +38,7 @@ function appendAllChildren(parent, workInProgress) {
     if (node === workInProgress) {
       return;
     }
+    // 挂载函数组件子结点后,找不到sibling,那么需要返回找父结点的sibling
     while (node.sibling === null) {
       if (node.return === null || node.return === workInProgress) {
         return;

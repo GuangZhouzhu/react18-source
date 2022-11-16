@@ -6,6 +6,8 @@ import { Placement } from './ReactFiberFlags';
 /**
  *
  * @param {*} shouldTrackSideEffects 是否跟踪副作用
+ * 第一次挂载新结点时,是不用跟踪副作用的,complete阶段会直接把新结点DOM挂到父结点DOM上
+ * 当更新有老Fiber的结点时,才会跟踪副作用,并在commitRoot阶段会递归执行副作用
  */
 function createChildReconciler(shouldTrackSideEffects) {
   function reconcileSingleElement(returnFiber, currentFirstFiber, element) {
