@@ -1,6 +1,6 @@
 import { appendChild, insertBefore } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
 import { MutationMask, Placement } from './ReactFiberFlags';
-import { HostComponent, HostRoot, HostText } from './ReactWorkTags';
+import { HostComponent, HostRoot, HostText, FunctionComponent } from './ReactWorkTags';
 
 /**
  * 遍历Fiber树,执行所有Fiber上的副作用
@@ -9,6 +9,7 @@ import { HostComponent, HostRoot, HostText } from './ReactWorkTags';
  */
 export function commitMutationEffectsOnFiber(finishedWork, root) {
   switch (finishedWork.tag) {
+    case FunctionComponent:
     case HostRoot:
     case HostComponent:
     case HostText: {

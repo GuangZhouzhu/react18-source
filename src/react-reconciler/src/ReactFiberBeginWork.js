@@ -1,8 +1,15 @@
 import logger, { indent } from 'shared/logger';
-import { HostRoot, HostComponent, HostText } from './ReactWorkTags';
+import {
+  HostRoot,
+  HostComponent,
+  HostText,
+  IndeterminateComponent,
+  FunctionComponent,
+} from './ReactWorkTags';
 import { processUpdateQueue } from './ReactFiberClassUpdateQueue';
 import { mountChildFibers, reconcileChildrenFibers } from './ReactChildFiber';
 import { shouldSetTextContent } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
+import { renderWithHooks } from './ReactFiberHooks';
 
 /**
  * 根据新的虚拟DOM,生成新的Fiber链表
@@ -51,6 +58,20 @@ function updateHostComponent(current, workInProgress) {
 }
 
 /**
+ * 挂载函数组件
+ * @param {*} current 老Fiber
+ * @param {*} workInProgress 新Fiber
+ * @param {*} Component 组件类型: 也就是函数组件的定义
+ */
+function mountIndeterminateComponent(current, workInProgress, Component) {
+  const props = workInProgress.pendingProps;
+  const value = renderWithHooks(current, workInProgress, Component, props);
+  workInProgress.tag = FunctionComponent;
+  reconcileChildren(current, workInProgress, value);
+  return workInProgress.child;
+}
+
+/**
  *  根据新虚拟DOM,构建新的Fiber子链表
  * @param {*} current 老Fiber
  * @param {*} workInProgress 新Fiber
@@ -68,6 +89,10 @@ export function beginWork(current, workInProgress) {
     }
     case HostText: {
       return null;
+    }
+    // 处理函数组件和类组件,在这里还区分不了具体是函数组件还是类组件,因此先用这个类型判断
+    case IndeterminateComponent: {
+      return mountIndeterminateComponent(current, workInProgress, workInProgress.type);
     }
     default: {
       return null;
