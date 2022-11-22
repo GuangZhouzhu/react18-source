@@ -4,6 +4,7 @@ import { beginWork } from './ReactFiberBeginWork';
 import { completeWork } from './ReactFiberCompleteWork';
 import { MutationMask, NoFlags } from './ReactFiberFlags';
 import { commitMutationEffectsOnFiber } from './ReactFiberCommitWork';
+import { printFiber } from 'shared/logger';
 
 let workInProgress = null;
 
@@ -33,6 +34,9 @@ function performConcurrentWorkOnRoot(root) {
   renderRootSync(root);
   // 开始进入提交阶段(执行副作用,修改真实DOM)
   const finishedWork = root.current.alternate;
+  console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`);
+  printFiber(finishedWork);
+  console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`);
   root.finishedWork = finishedWork;
   commitRoot(root);
 }
