@@ -61,7 +61,7 @@ export function dispatchEventForPluginEventSystem(
   targetInst,
   targetContainer,
 ) {
-  dispatchEventFromPlugins(
+  dispatchEventsForPlugins(
     domEventName,
     eventSystemFlags,
     nativeEvent,
@@ -70,7 +70,7 @@ export function dispatchEventForPluginEventSystem(
   );
 }
 
-function dispatchEventFromPlugins(
+function dispatchEventsForPlugins(
   domEventName,
   eventSystemFlags,
   nativeEvent,
@@ -88,7 +88,7 @@ function dispatchEventFromPlugins(
     eventSystemFlags,
     targetContainer,
   );
-  console.log('dispatchQueue', dispatchQueue);
+  processDispatchQueue(dispatchQueue, eventSystemFlags);
 }
 
 function extractEvents(
@@ -119,6 +119,7 @@ export function accumulateSinglePhaseListeners(
 ) {
   const captureName = reactName + 'Capture';
   const reactEventName = isCapturePhase ? captureName : reactName;
+  // 存储顺序为[子,父,父父...]
   const listeners = [];
   let instance = targetFiber;
   while (instance !== null) {
@@ -142,4 +143,38 @@ function createDispatchListener(instance, listener, currentTarget) {
     listener,
     currentTarget,
   };
+}
+
+function processDispatchQueue(dispatchQueue, eventSystemFlags) {
+  const inCapturePhase = (eventSystemFlags & IS_CAPTURE_PHASE) !== 0;
+  for (let i = 0; i < dispatchQueue.length; i++) {
+    const { event, listeners } = dispatchQueue[i];
+    processDispatchQueueItemsInOrder(event, listeners, inCapturePhase);
+  }
+}
+
+function processDispatchQueueItemsInOrder(event, dispatchListeners, inCapturePhase) {
+  if (inCapturePhase) {
+    for (let i = dispatchListeners.length - 1; i >= 0; i--) {
+      const { currentTarget, listener } = dispatchListeners[i];
+      if (event.isPropagationStopped()) {
+        return;
+      }
+      executeDispatch(event, listener, currentTarget);
+    }
+  } else {
+    for (let i = 0; i < dispatchListeners.length; i++) {
+      const { currentTarget, listener } = dispatchListeners[i];
+      if (event.isPropagationStopped()) {
+        return;
+      }
+      executeDispatch(event, listener, currentTarget);
+    }
+  }
+}
+
+function executeDispatch(event, listener, currentTarget) {
+  event.currentTarget = currentTarget;
+  listener(event);
+  event.currentTarget = null;
 }

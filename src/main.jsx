@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot } from 'react-dom/client';
 
 // 一阶段样例
 // let element = (
@@ -10,13 +10,32 @@ import { createRoot } from 'react-dom/client'
 // 函数组件样例
 function FunctionComponent() {
   return (
-    <h1 onClick={(event) => { console.log(`parentBubble`) }} onClickCapture={(event) => { console.log('parentCapture') }}>hello
-      <span style={{ color: 'red' }} onClick={(event) => { console.log(`childBubble`) }} onClickCapture={(event) => { console.log('childCapture') }}>world</span>
+    <h1
+      onClick={(event) => {
+        console.log(`parentBubble`);
+      }}
+      onClickCapture={(event) => {
+        console.log('parentCapture');
+      }}
+    >
+      hello
+      <span
+        style={{ color: 'red' }}
+        onClick={(event) => {
+          console.log(`childBubble`);
+          event.stopPropagation();
+        }}
+        onClickCapture={(event) => {
+          console.log('childCapture');
+        }}
+      >
+        world
+      </span>
     </h1>
-  )
+  );
 }
-let element = <FunctionComponent />
+let element = <FunctionComponent />;
 
-const root = createRoot(document.getElementById('root'))
+const root = createRoot(document.getElementById('root'));
 
-root.render(element)
+root.render(element);
