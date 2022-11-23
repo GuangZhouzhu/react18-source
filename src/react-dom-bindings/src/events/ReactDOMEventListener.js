@@ -1,3 +1,7 @@
+import getEventTarget from './getEventTarget';
+import { getClosestInstanceFromNode } from '../client/ReactDOMComponentTree';
+import { dispatchEventForPluginEventSystem } from './DOMPluginEventSystem';
+
 export function createEventListenerWrapperWithPriority(
   targetContainer,
   domEventName,
@@ -18,6 +22,22 @@ function dispatchDiscreteEvent(domEventName, eventSystemFlags, container, native
   dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent);
 }
 
+/**
+ * 此方法就是委托给容器的回调,当容器#root在捕获或者冒泡时,会执行此函数
+ * @param {*} domEventName
+ * @param {*} eventSystemFlags
+ * @param {*} container
+ * @param {*} nativeEvent
+ */
 export function dispatchEvent(domEventName, eventSystemFlags, targetContainer, nativeEvent) {
-  console.log('dispatchEvent', domEventName, eventSystemFlags, targetContainer, nativeEvent);
+  // 获取事件源
+  const nativeEventTarget = getEventTarget(nativeEvent);
+  const targetInst = getClosestInstanceFromNode(nativeEventTarget);
+  dispatchEventForPluginEventSystem(
+    domEventName,
+    eventSystemFlags,
+    nativeEvent,
+    targetInst,
+    targetContainer,
+  );
 }

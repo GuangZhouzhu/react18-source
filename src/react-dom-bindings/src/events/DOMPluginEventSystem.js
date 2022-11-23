@@ -3,6 +3,9 @@ import * as SimpleEventPlugin from './plugins/SimpleEventPlugin';
 import { IS_CAPTURE_PHASE } from './EventSystemFlags';
 import { createEventListenerWrapperWithPriority } from './ReactDOMEventListener';
 import { addEventCaptureListener, addEventBubbleListener } from './EventListener';
+import getEventTarget from './getEventTarget';
+import { HostComponent } from 'react-reconciler/src/ReactWorkTags';
+import getListener from './getListener';
 
 SimpleEventPlugin.registerEvents();
 
@@ -49,4 +52,94 @@ function addTrappedEventListener(
   } else {
     addEventBubbleListener(targetContainer, domEventName, listener);
   }
+}
+
+export function dispatchEventForPluginEventSystem(
+  domEventName,
+  eventSystemFlags,
+  nativeEvent,
+  targetInst,
+  targetContainer,
+) {
+  dispatchEventFromPlugins(
+    domEventName,
+    eventSystemFlags,
+    nativeEvent,
+    targetInst,
+    targetContainer,
+  );
+}
+
+function dispatchEventFromPlugins(
+  domEventName,
+  eventSystemFlags,
+  nativeEvent,
+  targetInst,
+  targetContainer,
+) {
+  const nativeEventTarget = getEventTarget(nativeEvent);
+  const dispatchQueue = [];
+  extractEvents(
+    dispatchQueue,
+    domEventName,
+    targetInst,
+    nativeEvent,
+    nativeEventTarget,
+    eventSystemFlags,
+    targetContainer,
+  );
+  console.log('dispatchQueue', dispatchQueue);
+}
+
+function extractEvents(
+  dispatchQueue,
+  domEventName,
+  targetInst,
+  nativeEvent,
+  nativeEventTarget,
+  eventSystemFlags,
+  targetContainer,
+) {
+  SimpleEventPlugin.extractEvents(
+    dispatchQueue,
+    domEventName,
+    targetInst,
+    nativeEvent,
+    nativeEventTarget,
+    eventSystemFlags,
+    targetContainer,
+  );
+}
+
+export function accumulateSinglePhaseListeners(
+  targetFiber,
+  reactName,
+  nativeEventType,
+  isCapturePhase,
+) {
+  const captureName = reactName + 'Capture';
+  const reactEventName = isCapturePhase ? captureName : reactName;
+  const listeners = [];
+  let instance = targetFiber;
+  while (instance !== null) {
+    const { stateNode, tag } = instance;
+    if (tag === HostComponent && stateNode !== null) {
+      if (reactEventName !== null) {
+        const listener = getListener(instance, reactEventName);
+        if (listener !== null && listener !== undefined) {
+          listeners.push(createDispatchListener(instance, listener, stateNode));
+        }
+      }
+    }
+    instance = instance.return;
+  }
+  return listeners;
+}
+
+function createDispatchListener(instance, listener, currentTarget) {
+  return {
+    instance,
+    listener,
+    currentTarget,
+  };
 }
