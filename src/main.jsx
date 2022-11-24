@@ -1,39 +1,36 @@
+import { useReducer } from 'react';
 import { createRoot } from 'react-dom/client';
 
-// 一阶段样例
-// let element = (
-//   <h1>hello
-//     <span style={{ color: 'red' }}>world</span>
-//   </h1>
-// )
+function reducer(state, action) {
+  if (action.type === 'add') {
+    return state + action.payload;
+  }
+  return state;
+}
 
-// 函数组件样例
+// hooks样例: useReducer
 function FunctionComponent() {
+  const [number, dispatch] = useReducer(reducer, 0);
+  const [number2, dispatch2] = useReducer(reducer, 0);
   return (
-    <h1
-      onClick={(event) => {
-        console.log(`parentBubble`);
-      }}
-      onClickCapture={(event) => {
-        console.log('parentCapture');
+    <button
+      onClick={() => {
+        dispatch({
+          type: 'add',
+          payload: 1,
+        });
+        dispatch2({
+          type: 'add',
+          payload: 2,
+        });
       }}
     >
-      hello
-      <span
-        style={{ color: 'red' }}
-        onClick={(event) => {
-          console.log(`childBubble`);
-          event.stopPropagation();
-        }}
-        onClickCapture={(event) => {
-          console.log('childCapture');
-        }}
-      >
-        world
-      </span>
-    </h1>
+      {number}
+      {number2}
+    </button>
   );
 }
+
 let element = <FunctionComponent />;
 
 const root = createRoot(document.getElementById('root'));
