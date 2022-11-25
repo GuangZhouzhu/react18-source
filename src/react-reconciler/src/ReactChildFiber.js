@@ -1,6 +1,11 @@
 import { REACT_ELEMENT_TYPE } from 'shared/ReactSymbols';
 import isArray from 'shared/isArray';
-import { createFiberFromElement, FiberNode, createFiberFromText } from './ReactFiber';
+import {
+  createFiberFromElement,
+  FiberNode,
+  createFiberFromText,
+  createWorkInProgress,
+} from './ReactFiber';
 import { Placement } from './ReactFiberFlags';
 
 /**
@@ -10,15 +15,39 @@ import { Placement } from './ReactFiberFlags';
  * 当更新有老Fiber的结点时,才会跟踪副作用,并在commitRoot阶段会递归执行副作用
  */
 function createChildReconciler(shouldTrackSideEffects) {
-  function reconcileSingleElement(returnFiber, currentFirstFiber, element) {
-    // 因为现在实现的是初次挂载,currentFirstFiber肯定是没有的,所以可以直接根据虚拟DOM创建新的Fiber结点
+  function useFiber(fiber, pendingProps) {
+    const clone = createWorkInProgress(fiber, pendingProps);
+    clone.index = 0;
+    clone.sibling = null;
+    return clone;
+  }
+  function reconcileSingleElement(returnFiber, currentFirstChild, element) {
+    // 新虚拟DOM的key
+    const key = element.key;
+    // 老组件的Fiber
+    let child = currentFirstChild;
+    while (child !== null) {
+      // 判断老Fiber对应的key和新虚拟DOM对象的key是否一致
+      if (child.key === key) {
+        const elementType = element.type;
+        // 老Fiber对应的类型和新虚拟DOM的类型是否相同
+        if (child.type === elementType) {
+          // 如果key一样,类型也一样,则认为此Fiber结点可以复用
+          const existing = useFiber(child, element.props);
+          existing.return = returnFiber;
+          return existing;
+        }
+      }
+      child = child.sibling;
+    }
+    // 因为现在实现的是初次挂载,currentFirstChild肯定是没有的,所以可以直接根据虚拟DOM创建新的Fiber结点
     const created = createFiberFromElement(element);
     created.return = returnFiber;
     return created;
   }
 
   function placeSingleChild(newFiber, newIndex) {
-    if (shouldTrackSideEffects) {
+    if (shouldTrackSideEffects && newFiber.alternate === null) {
       // 要在最后的提交阶段插入此结点
       newFiber.flags |= Placement;
     }
@@ -57,7 +86,7 @@ function createChildReconciler(shouldTrackSideEffects) {
       newFiber.flags |= Placement;
     }
   }
-  function reconcileChildrenArray(returnFiber, currentFirstFiber, newChildren) {
+  function reconcileChildrenArray(returnFiber, currentFirstChild, newChildren) {
     // 需要返回的第一个新儿子
     let resultingFirstChild = null;
     // 上一个新Fiber

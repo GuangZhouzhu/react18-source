@@ -71,6 +71,12 @@ function mountIndeterminateComponent(current, workInProgress, Component) {
   return workInProgress.child;
 }
 
+function updateFunctionComponent(current, workInProgress, Component, nextProps) {
+  const nextChildren = renderWithHooks(current, workInProgress, Component, nextProps);
+  reconcileChildren(current, workInProgress, nextChildren);
+  return workInProgress.child;
+}
+
 /**
  *  根据新虚拟DOM,构建新的Fiber子链表
  * @param {*} current 老Fiber
@@ -93,6 +99,11 @@ export function beginWork(current, workInProgress) {
     // 处理函数组件和类组件,在这里还区分不了具体是函数组件还是类组件,因此先用这个类型判断
     case IndeterminateComponent: {
       return mountIndeterminateComponent(current, workInProgress, workInProgress.type);
+    }
+    case FunctionComponent: {
+      const Component = workInProgress.type;
+      const nextProps = workInProgress.pendingProps;
+      return updateFunctionComponent(current, workInProgress, Component, nextProps);
     }
     default: {
       return null;
