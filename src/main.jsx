@@ -1,19 +1,12 @@
-import { useReducer } from 'react';
+import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-function reducer(state, action) {
-  if (action.type === 'add') {
-    return state + action.payload;
-  }
-  return state;
-}
-
-// hooks样例: useReducer
+// hooks样例: userState
 function FunctionComponent() {
-  const [number, dispatch] = useReducer(reducer, 0);
-  const [number2, dispatch2] = useReducer(reducer, 0);
+  const [number1, setNumber1] = useState(0);
+  const [number2, setNumber2] = useState(1);
   let attrs = { id: 'btn1' };
-  if (number === 6) {
+  if (number1 === 6) {
     delete attrs.id;
     attrs.style = { color: 'red' };
   }
@@ -21,29 +14,14 @@ function FunctionComponent() {
     <button
       {...attrs}
       onClick={() => {
-        dispatch({
-          type: 'add',
-          payload: 1,
-        });
-        dispatch({
-          type: 'add',
-          payload: 2,
-        });
-        dispatch({
-          type: 'add',
-          payload: 3,
-        });
-        dispatch2({
-          type: 'add',
-          payload: 2,
-        });
-        dispatch2({
-          type: 'add',
-          payload: 2,
-        });
+        setNumber1(number1 + 1);
+        setNumber1((num) => num + 2);
+        setNumber1(number1 + 3);
+        setNumber2(number2 + 4);
+        setNumber2(number2 + 6);
       }}
     >
-      {number}
+      {number1}
       {number2}
     </button>
   );

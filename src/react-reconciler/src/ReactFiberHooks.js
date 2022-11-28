@@ -1,6 +1,7 @@
 import ReactSharedInternals from 'shared/ReactSharedInternals';
 import { scheduleUpdateOnFiber } from './ReactFiberWorkLoop';
 import { enqueueConcurrentHookUpdate } from './ReactFiberConcurrentUpdates';
+import is from 'shared/objectIs';
 
 const { ReactCurrentDispatcher } = ReactSharedInternals;
 let currentlyRenderingFiber = null;
@@ -8,10 +9,16 @@ let workInProgressHook = null;
 let currentHook = null;
 const HooksDispatcherOnMount = {
   useReducer: mountReducer,
+  useState: mountState,
 };
 const HooksDispatcherOnUpdate = {
   useReducer: updateReducer,
+  useState: updateState,
 };
+// useState其实就是一个内置了reducer的useReducer
+function basicStateReducer(state, action) {
+  return typeof action === 'function' ? action(state) : action;
+}
 
 function mountReducer(reducer, initialArg, init) {
   const hook = mountWorkInProgressHook();
@@ -26,6 +33,19 @@ function mountReducer(reducer, initialArg, init) {
     currentlyRenderingFiber,
     queue,
   ));
+  return [hook.memoizedState, dispatch];
+}
+function mountState(initialState) {
+  const hook = mountWorkInProgressHook();
+  hook.memoizedState = initialState;
+  const queue = {
+    pending: null,
+    dispatch: null,
+    lastRenderedReducer: basicStateReducer,
+    lastRenderedState: initialState,
+  };
+  hook.queue = queue;
+  const dispatch = (queue.dispatch = dispatchSetState.bind(null, currentlyRenderingFiber, queue));
   return [hook.memoizedState, dispatch];
 }
 
@@ -57,6 +77,10 @@ function updateReducer(reducer) {
   }
   hook.memoizedState = queue.lastRenderedState = newState;
   return [hook.memoizedState, queue.dispatch];
+}
+
+function updateState(initialState) {
+  return updateReducer(basicStateReducer, initialState);
 }
 
 function updateWorkInProgressHook() {
@@ -110,6 +134,24 @@ function dispatchReducerAction(fiber, queue, action) {
   // 把当前的最新更新添加到更新队列中,并返回当前的根Fiber
   const root = enqueueConcurrentHookUpdate(fiber, queue, update);
   scheduleUpdateOnFiber(root);
+}
+function dispatchSetState(fiber, queue, action) {
+  const update = {
+    action,
+    hasEagerState: false,
+    eagerState: null,
+    next: null,
+  };
+  // 当用useState派发动作后,立刻用上一次的状态和上一次的reducer计算新状态,如果一样就不更新了
+  const { lastRenderedReducer, lastRenderedState: currentState } = queue;
+  const eagerState = lastRenderedReducer(currentState, action);
+  update.hasEagerState = true;
+  update.eagerState = eagerState;
+  if (is(eagerState, currentState)) {
+    return;
+  }
+  const root = enqueueConcurrentHookUpdate(fiber, queue, update);
+  scheduleUpdateOnFiber(root, fiber);
 }
 
 /**
