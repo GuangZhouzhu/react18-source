@@ -1,4 +1,4 @@
-import { setInitialProperties, diffProperties } from './ReactDOMComponent';
+import { setInitialProperties, diffProperties, updateProperties } from './ReactDOMComponent';
 import { precacheFiberNode, updateFiberProps } from './ReactDOMComponentTree';
 
 export function shouldSetTextContent(type, props) {
@@ -35,4 +35,9 @@ export function insertBefore(parentInstance, child, beforeChild) {
 
 export function prepareUpdate(domElement, type, oldProps, newProps) {
   return diffProperties(domElement, type, oldProps, newProps);
+}
+
+export function commitUpdate(domElement, updatePayload, type, oldProps, newProps) {
+  updateProperties(domElement, updatePayload, type, oldProps, newProps);
+  updateFiberProps(domElement, newProps);
 }

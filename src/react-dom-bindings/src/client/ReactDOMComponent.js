@@ -103,3 +103,21 @@ export function diffProperties(domElement, tag, lastProps, nextProps) {
   }
   return updatePayload;
 }
+
+export function updateProperties(domElement, updatePayload, type, oldProps, newProps) {
+  updateDOMProperties(domElement, updatePayload);
+}
+
+function updateDOMProperties(domElement, updatePayload) {
+  for (let i = 0; i < updatePayload.length; i += 2) {
+    const propKey = updatePayload[i];
+    const propValue = updatePayload[i + 1];
+    if (propKey === STYLE) {
+      setValueForStyles(domElement, propValue);
+    } else if (propKey === CHILDREN) {
+      setTextContent(domElement, propValue);
+    } else {
+      setValueForProperty(domElement, propKey, propValue);
+    }
+  }
+}

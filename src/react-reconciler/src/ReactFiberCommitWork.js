@@ -1,5 +1,9 @@
-import { appendChild, insertBefore } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
-import { MutationMask, Placement } from './ReactFiberFlags';
+import {
+  appendChild,
+  insertBefore,
+  commitUpdate,
+} from 'react-dom-bindings/src/client/ReactDOMHostConfig';
+import { MutationMask, Placement, Update } from './ReactFiberFlags';
 import { HostComponent, HostRoot, HostText, FunctionComponent } from './ReactWorkTags';
 
 /**
@@ -8,14 +12,46 @@ import { HostComponent, HostRoot, HostText, FunctionComponent } from './ReactWor
  * @param {*} root Fiber根
  */
 export function commitMutationEffectsOnFiber(finishedWork, root) {
+  const current = finishedWork.alternate;
+  const flags = finishedWork.flags;
   switch (finishedWork.tag) {
-    case FunctionComponent:
-    case HostRoot:
-    case HostComponent:
-    case HostText: {
+    case HostRoot: {
       // 先递归处理子结点的副作用
       recursivelyTraverseMutationEffects(root, finishedWork);
       // 再处理自己的副作用
+      commitReconciliationEffects(finishedWork);
+      break;
+    }
+    case FunctionComponent: {
+      // 先递归处理子结点的副作用
+      recursivelyTraverseMutationEffects(root, finishedWork);
+      // 再处理自己的副作用
+      commitReconciliationEffects(finishedWork);
+      break;
+    }
+    case HostComponent: {
+      // 先递归处理子结点的副作用
+      recursivelyTraverseMutationEffects(root, finishedWork);
+      // 再处理自己的副作用
+      commitReconciliationEffects(finishedWork);
+      // 处理DOM更新
+      if (flags & Update) {
+        const instance = finishedWork.stateNode;
+        if (instance !== null) {
+          const newProps = finishedWork.memoizedProps;
+          const oldProps = current !== null ? current.memoizedProps : newProps;
+          const type = finishedWork.type;
+          const updatePayload = finishedWork.updateQueue;
+          finishedWork.updateQueue = null;
+          if (updatePayload) {
+            commitUpdate(instance, updatePayload, type, oldProps, newProps, finishedWork);
+          }
+        }
+      }
+      break;
+    }
+    case HostText: {
+      recursivelyTraverseMutationEffects(root, finishedWork);
       commitReconciliationEffects(finishedWork);
       break;
     }
