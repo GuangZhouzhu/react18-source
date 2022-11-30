@@ -46,6 +46,8 @@ export function FiberNode(tag, pendingProps, key) {
   // 双缓冲技术: 用来存储替身结点(每个结点其实有2个Fiber结点在交替使用,节约内存)
   this.alternate = null;
   this.index = 0;
+  // 存放将要删除的子Fiber
+  this.deletions = null;
 }
 
 export function createFiber(tag, pendingProps, key) {

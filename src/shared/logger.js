@@ -44,7 +44,12 @@ export function printFiber(fiber) {
     if (fiber.deletions) {
       for (let i = 0; i < fiber.deletions.length; i++) {
         const childToDelete = fiber.deletions[i];
-        console.log(getTag(childToDelete.tag), childToDelete.type, childToDelete.memoizedProps);
+        console.log(
+          '删除: ',
+          getTag(childToDelete.tag),
+          childToDelete.type,
+          childToDelete.memoizedProps,
+        );
       }
     }
   }

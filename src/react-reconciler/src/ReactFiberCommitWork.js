@@ -2,6 +2,7 @@ import {
   appendChild,
   insertBefore,
   commitUpdate,
+  removeChild,
 } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
 import { MutationMask, Placement, Update } from './ReactFiberFlags';
 import { HostComponent, HostRoot, HostText, FunctionComponent } from './ReactWorkTags';
@@ -61,13 +62,82 @@ export function commitMutationEffectsOnFiber(finishedWork, root) {
   }
 }
 
+/**
+ * 递归处理变更的副作用
+ * @param {*} root FiberRoot
+ * @param {*} parentFiber 父Fiber
+ */
 function recursivelyTraverseMutationEffects(root, parentFiber) {
+  // 先把父Fiber上的需要删除的节点删除
+  const deletions = parentFiber.deletions;
+  if (deletions !== null) {
+    for (let i = 0; i < deletions.length; i++) {
+      const childToDelete = deletions[i];
+      commitDeletionEffects(root, parentFiber, childToDelete);
+    }
+  }
+  // 再处理剩下的子节点
   if (parentFiber.subtreeFlags & MutationMask) {
     let { child } = parentFiber;
     while (child !== null) {
       commitMutationEffectsOnFiber(child, root);
       child = child.sibling;
     }
+  }
+}
+
+let hostParent = null;
+/**
+ * 提交删除副作用
+ * @param {*} root FiberRoot
+ * @param {*} returnFiber 父Fiber
+ * @param {*} deletedFiber 要删除的Fiber
+ */
+function commitDeletionEffects(root, returnFiber, deletedFiber) {
+  let parent = returnFiber;
+  // 一直向上查找,直到找到真实DOM节点
+  findParent: while (parent !== null) {
+    switch (parent.tag) {
+      case HostComponent: {
+        hostParent = parent.stateNode;
+        break findParent;
+      }
+      case HostRoot: {
+        hostParent = parent.stateNode.containerInfo;
+        break findParent;
+      }
+      default: {
+        break;
+      }
+    }
+    parent = parent.return;
+  }
+  commitDeletionEffectsOnFiber(root, returnFiber, deletedFiber);
+  hostParent = null;
+}
+
+function commitDeletionEffectsOnFiber(finishedRoot, nearestMountedAncestor, deletedFiber) {
+  switch (deletedFiber.tag) {
+    case HostComponent:
+    case HostText: {
+      // 当要删除一个节点的时候,要先删除它的子结点,然后再把自己删除
+      recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, deletedFiber);
+      // 再把自己删除
+      if (hostParent !== null) {
+        removeChild(hostParent, deletedFiber.stateNode);
+      }
+      break;
+    }
+    default: {
+      break;
+    }
+  }
+}
+function recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, parent) {
+  let child = parent.child;
+  while (child !== null) {
+    commitDeletionEffectsOnFiber(finishedRoot, nearestMountedAncestor, child);
+    child = child.sibling;
   }
 }
 

@@ -1,29 +1,65 @@
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-// hooks样例: userState
+// // DOM-DIFF样例: 单节点(key相同,类型相同)
+// function FunctionComponent() {
+//   const [number, setNumber] = useState(0);
+//   return number === 0 ? (
+//     <div onClick={() => setNumber(number + 1)} key="title" id="title">
+//       title
+//     </div>
+//   ) : (
+//     <div onClick={() => setNumber(number + 1)} key="title" id="title2">
+//       title2
+//     </div>
+//   );
+// }
+
+// // DOM-DIFF样例: 单节点(key不同,类型相同)
+// function FunctionComponent() {
+//   const [number, setNumber] = useState(0);
+//   return number === 0 ? (
+//     <div onClick={() => setNumber(number + 1)} key="title1" id="title">
+//       title
+//     </div>
+//   ) : (
+//     <div onClick={() => setNumber(number + 1)} key="title2" id="title2">
+//       title2
+//     </div>
+//   );
+// }
+
+// // DOM-DIFF样例: 单节点(key相同,类型不同)
+// function FunctionComponent() {
+//   const [number, setNumber] = useState(0);
+//   return number === 0 ? (
+//     <div onClick={() => setNumber(number + 1)} key="title1" id="title1">
+//       title1
+//     </div>
+//   ) : (
+//     <p onClick={() => setNumber(number + 1)} key="title1" id="title1">
+//       title1
+//     </p>
+//   );
+// }
+
+// DOM-DIFF样例: 原来多个节点,现在只有一个节点
 function FunctionComponent() {
-  const [number1, setNumber1] = useState(0);
-  const [number2, setNumber2] = useState(1);
-  let attrs = { id: 'btn1' };
-  if (number1 === 6) {
-    delete attrs.id;
-    attrs.style = { color: 'red' };
-  }
-  return (
-    <button
-      {...attrs}
-      onClick={() => {
-        setNumber1(number1 + 1);
-        setNumber1((num) => num + 2);
-        setNumber1(number1 + 3);
-        setNumber2(number2 + 4);
-        setNumber2(number2 + 6);
-      }}
-    >
-      {number1}
-      {number2}
-    </button>
+  const [number, setNumber] = useState(0);
+  return number === 0 ? (
+    <ul key="container" onClick={() => setNumber(number + 1)}>
+      <li key="A">A</li>
+      <li key="B" id="B">
+        B
+      </li>
+      <li key="C">C</li>
+    </ul>
+  ) : (
+    <ul key="container" onClick={() => setNumber(number + 1)}>
+      <li key="B" id="B2">
+        B2
+      </li>
+    </ul>
   );
 }
 
