@@ -1,6 +1,8 @@
 import ReactSharedInternals from 'shared/ReactSharedInternals';
 import { scheduleUpdateOnFiber } from './ReactFiberWorkLoop';
 import { enqueueConcurrentHookUpdate } from './ReactFiberConcurrentUpdates';
+import { Passive as PassiveEffect } from './ReactFiberFlags';
+import { HasEffect as HookHasEffect, Passive as HookPassive } from './ReactHookEffectTags';
 import is from 'shared/objectIs';
 
 const { ReactCurrentDispatcher } = ReactSharedInternals;
@@ -10,10 +12,12 @@ let currentHook = null;
 const HooksDispatcherOnMount = {
   useReducer: mountReducer,
   useState: mountState,
+  useEffect: mountEffect,
 };
 const HooksDispatcherOnUpdate = {
   useReducer: updateReducer,
   useState: updateState,
+  useEffect: updateEffect,
 };
 // useState其实就是一个内置了reducer的useReducer
 function basicStateReducer(state, action) {
@@ -154,6 +158,95 @@ function dispatchSetState(fiber, queue, action) {
   scheduleUpdateOnFiber(root, fiber);
 }
 
+function mountEffect(create, deps) {
+  return mountEffectImpl(PassiveEffect, HookPassive, create, deps);
+}
+function mountEffectImpl(fiberFlags, hookFlags, create, deps) {
+  const hook = mountWorkInProgressHook();
+  const nextDeps = deps === undefined ? null : deps;
+  // 给当前的函数组件Fiber添加flags
+  currentlyRenderingFiber.flags |= fiberFlags;
+  hook.memoizedState = pushEffect(HookHasEffect | hookFlags, create, undefined, nextDeps);
+}
+
+function updateEffect(create, deps) {
+  return updateEffectImpl(PassiveEffect, HookPassive, create, deps);
+}
+function updateEffectImpl(fiberFlags, hookFlags, create, deps) {
+  const hook = updateWorkInProgressHook();
+  const nextDeps = deps === undefined ? null : deps;
+  let destroy;
+  if (currentHook !== null) {
+    const prevEffect = currentHook.memoizedState;
+    destroy = prevEffect.destroy;
+    if (nextDeps !== null) {
+      const prevDeps = prevEffect.deps;
+      // 前后deps相同,更新时effect不需要执行
+      if (areHookInputsEqual(nextDeps, prevDeps)) {
+        // flags中不包含HookHasEffect,那么这个effect就不会执行
+        hook.memoizedState = pushEffect(hookFlags, create, destroy, nextDeps);
+        return;
+      }
+    }
+  }
+  // effect是否执行,是根据hookFlags中是否包含HookHasEffect标识决定的,这里加上HookHasEffect是因为更新的effect需要执行
+  currentlyRenderingFiber.flags |= fiberFlags;
+  hook.memoizedState = pushEffect(HookHasEffect | hookFlags, create, destroy, nextDeps);
+}
+
+/**
+ * 添加effect链表
+ * @param {*} tag effect的标识
+ * @param {*} create 创建方法
+ * @param {*} destroy 销毁方法
+ * @param {*} deps 依赖数组
+ */
+function pushEffect(tag, create, destroy, deps) {
+  const effect = {
+    tag,
+    create,
+    destroy,
+    deps,
+    next: null,
+  };
+  let componentUpdateQueue = currentlyRenderingFiber.updateQueue;
+  if (componentUpdateQueue === null) {
+    componentUpdateQueue = createFunctionComponentUpdateQueue();
+    currentlyRenderingFiber.updateQueue = componentUpdateQueue;
+    componentUpdateQueue.lastEffect = effect.next = effect;
+  } else {
+    const lastEffect = componentUpdateQueue.lastEffect;
+    if (lastEffect === null) {
+      componentUpdateQueue.lastEffect = effect.next = effect;
+    } else {
+      const firstEffect = lastEffect.next;
+      lastEffect.next = effect;
+      effect.next = firstEffect;
+      componentUpdateQueue.lastEffect = effect;
+    }
+  }
+  return effect;
+}
+
+function createFunctionComponentUpdateQueue() {
+  return {
+    lastEffect: null,
+  };
+}
+
+function areHookInputsEqual(nextDeps, prevDeps) {
+  if (prevDeps === null) {
+    return false;
+  }
+  for (let i = 0; i < prevDeps.length && i < nextDeps.length; i++) {
+    if (is(nextDeps[i], prevDeps[i])) {
+      continue;
+    }
+    return false;
+  }
+  return true;
+}
+
 /**
  * 渲染函数组件
  * @param {*} current 老Fiber
@@ -164,6 +257,8 @@ function dispatchSetState(fiber, queue, action) {
  */
 export function renderWithHooks(current, workInProgress, Component, props) {
   currentlyRenderingFiber = workInProgress;
+  workInProgress.updateQueue = null;
+  workInProgress.memoizedState = null;
   // 需要在函数执行前,给 ReactCurrentDispatcher.current赋值,首次渲染和更新渲染需要赋值不同的函数
   if (current !== null && current.memoizedState !== null) {
     ReactCurrentDispatcher.current = HooksDispatcherOnUpdate;

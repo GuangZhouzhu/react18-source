@@ -2,13 +2,21 @@ import { scheduleCallback } from 'scheduler';
 import { createWorkInProgress } from './ReactFiber';
 import { beginWork } from './ReactFiberBeginWork';
 import { completeWork } from './ReactFiberCompleteWork';
-import { MutationMask, NoFlags } from './ReactFiberFlags';
-import { commitMutationEffectsOnFiber } from './ReactFiberCommitWork';
+import { MutationMask, NoFlags, Passive } from './ReactFiberFlags';
+import {
+  commitMutationEffectsOnFiber,
+  commitPassiveMountEffects,
+  commitPassiveUnmountEffects,
+} from './ReactFiberCommitWork';
 import { printFiber } from 'shared/logger';
 import { finishQueueingConcurrentUpdates } from './ReactFiberConcurrentUpdates';
 
 let workInProgress = null;
 let workInProgressRoot = null;
+// 此根节点上有没有useEffect类似的副作用
+let rootDoesHavePassiveEffect = false;
+// 具有useEffect副作用的根节点(FiberRoot)
+let rootWithPendingPassiveEffects = null;
 
 /**
  * 计划更新root
@@ -97,14 +105,38 @@ function completeUnitOfWork(unitOfWork) {
   } while (completedWork !== null);
 }
 
+function flushPassiveEffects() {
+  if (rootWithPendingPassiveEffects !== null) {
+    const root = rootWithPendingPassiveEffects;
+    // 执行卸载副作用(destroy)
+    commitPassiveUnmountEffects(root.current);
+    // 执行挂载副作用(create)
+    commitPassiveMountEffects(root, root.current);
+  }
+}
+
 // 要注意,一个父结点如果是新的,那么其所有子结点都没有副作用,因为创建之后都已经挂在父结点DOM上了.因此这种情况下只有父结点有副作用
 function commitRoot(root) {
   const { finishedWork } = root;
+  if (
+    (finishedWork.subtreeFlags & Passive) !== NoFlags ||
+    (finishedWork.flags & Passive) !== NoFlags
+  ) {
+    if (!rootDoesHavePassiveEffect) {
+      rootDoesHavePassiveEffect = true;
+      scheduleCallback(flushPassiveEffects);
+    }
+  }
   const subtreeHasEffects = (finishedWork.subtreeFlags & MutationMask) !== NoFlags;
   const rootHasEffect = (finishedWork.flags & MutationMask) !== NoFlags;
   // 如果自己有副作用,或者子结点有副作用,才进行提交DOM操作
   if (subtreeHasEffects || rootHasEffect) {
     commitMutationEffectsOnFiber(finishedWork, root);
+    root.current = finishedWork;
+    if (rootDoesHavePassiveEffect) {
+      rootDoesHavePassiveEffect = false;
+      rootWithPendingPassiveEffects = root;
+    }
   }
   // DOM变更后,就可以把root的current指向新的Fiber数(即current与workInProgress交换)
   root.current = finishedWork;
