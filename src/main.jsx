@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 
 function FunctionComponent() {
@@ -8,17 +8,23 @@ function FunctionComponent() {
     return () => {
       console.log('destroy useEffect1');
     };
-  }, []);
-  useEffect(() => {
-    console.log('useEffect2');
+  });
+  useLayoutEffect(() => {
+    console.log('useLayoutEffect2');
     return () => {
-      console.log('destroy useEffect2');
+      console.log('destroy useLayoutEffect2');
     };
-  }, [number]);
+  });
   useEffect(() => {
     console.log('useEffect3');
     return () => {
       console.log('destroy useEffect3');
+    };
+  });
+  useLayoutEffect(() => {
+    console.log('useLayoutEffect4');
+    return () => {
+      console.log('destroy useLayoutEffect4');
     };
   });
   return (
