@@ -1,4 +1,7 @@
-import { scheduleCallback } from 'scheduler';
+import {
+  NormalPriority as NormalSchedulerPriority,
+  scheduleCallback as Scheduler_scheduleCallback,
+} from './Scheduler';
 import { createWorkInProgress } from './ReactFiber';
 import { beginWork } from './ReactFiberBeginWork';
 import { completeWork } from './ReactFiberCompleteWork';
@@ -34,8 +37,7 @@ function ensureRootIsScheduled(root) {
     return;
   }
   workInProgressRoot = root;
-  // 告诉浏览器,要执行 performConcurrentWorkOnRoot
-  scheduleCallback(performConcurrentWorkOnRoot.bind(null, root));
+  Scheduler_scheduleCallback(NormalSchedulerPriority, performConcurrentWorkOnRoot.bind(null, root));
 }
 
 /**
@@ -125,7 +127,7 @@ function commitRoot(root) {
   ) {
     if (!rootDoesHavePassiveEffect) {
       rootDoesHavePassiveEffect = true;
-      scheduleCallback(flushPassiveEffects);
+      Scheduler_scheduleCallback(NormalSchedulerPriority, flushPassiveEffects);
     }
   }
   const subtreeHasEffects = (finishedWork.subtreeFlags & MutationMask) !== NoFlags;
