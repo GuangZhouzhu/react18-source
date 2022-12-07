@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 
 function FunctionComponent() {
+  console.log('FunctionComponent');
   const [number, setNumber] = useState(0);
+  useEffect(() => {
+    setNumber((number) => number + 1);
+  }, []);
   return (
     <button
       onClick={() => {

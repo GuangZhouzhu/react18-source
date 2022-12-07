@@ -163,4 +163,8 @@ function shouldYieldToHost() {
   return true;
 }
 
-export { NormalPriority as unstable_NormalPriority, unstable_scheduleCallback };
+export {
+  NormalPriority as unstable_NormalPriority,
+  unstable_scheduleCallback,
+  shouldYieldToHost as unstable_shouldYield,
+};

@@ -1,3 +1,5 @@
+import { allowConcurrentByDefault } from 'shared/ReactFeatureFlags';
+
 export const TotalLanes = 31;
 
 export const NoLanes = /*                         */ 0b0000000000000000000000000000000;
@@ -77,7 +79,11 @@ export function includesNonIdleWork(lanes) {
   return (lanes & NonIdleLanes) !== NoLanes;
 }
 export function includesBlockingLane(root, lanes) {
-  const SyncDefaultLanes = InputContinuousLane | DefaultLane;
+  if (allowConcurrentByDefault) {
+    return false;
+  }
+  const SyncDefaultLanes =
+    InputContinuousLane | DefaultLane | InputContinuousHydrationLane | DefaultHydrationLane;
   return (lanes & SyncDefaultLanes) !== NoLanes;
 }
 export function isSubsetOfLanes(set, subset) {
