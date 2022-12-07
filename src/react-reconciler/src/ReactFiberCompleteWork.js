@@ -93,7 +93,6 @@ export function completeWork(current, workInProgress) {
       // 如果老Fiber存在,且老Fiber上有真实DOM结点,要走结点更新逻辑
       if (current !== null && workInProgress.stateNode !== null) {
         updateHostComponent(current, workInProgress, type, newProps);
-        console.log('updatePayload', workInProgress.updateQueue);
       } else {
         // 初次挂载
         const instance = createInstance(type, newProps, workInProgress);

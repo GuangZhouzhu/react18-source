@@ -5,6 +5,8 @@ import {
   ContinuousEventPriority,
   DefaultEventPriority,
   DiscreteEventPriority,
+  getCurrentUpdatePriority,
+  setCurrentUpdatePriority,
 } from 'react-reconciler/src/ReactEventPriorities';
 
 export function createEventListenerWrapperWithPriority(
@@ -24,7 +26,13 @@ export function createEventListenerWrapperWithPriority(
  * @param {*} nativeEvent 原生事件
  */
 function dispatchDiscreteEvent(domEventName, eventSystemFlags, container, nativeEvent) {
-  dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent);
+  const previousPriority = getCurrentUpdatePriority();
+  try {
+    setCurrentUpdatePriority(DiscreteEventPriority);
+    dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent);
+  } finally {
+    setCurrentUpdatePriority(previousPriority);
+  }
 }
 
 /**

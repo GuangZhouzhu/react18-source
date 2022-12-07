@@ -33,8 +33,10 @@ import {
   ContinuousEventPriority,
   DefaultEventPriority,
   IdleEventPriority,
+  setCurrentUpdatePriority,
 } from './ReactEventPriorities';
 import { getCurrentEventPriority } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
+import { flushSyncCallbacks, scheduleSyncCallback } from './ReactFiberSyncTaskQueue';
 
 let workInProgress = null;
 let workInProgressRoot = null;
@@ -62,7 +64,10 @@ function ensureRootIsScheduled(root) {
   let newCallbackPriority = getHighestPriorityLane(nextLanes);
   // 如果新的优先级是同步的话
   if (newCallbackPriority === SyncLane) {
-    // TODO
+    // 先把performSyncWorkOnRoot添加到同步队列中
+    scheduleSyncCallback(performSyncWorkOnRoot.bind(null, root));
+    // 再把flushSyncCallbacks放入微任务队列
+    queueMicrotask(flushSyncCallbacks);
   } else {
     // 如果不是同步,则需要调度一个新的任务
     let schedulerPriorityLevel;
@@ -88,6 +93,19 @@ function ensureRootIsScheduled(root) {
       performConcurrentWorkOnRoot.bind(null, root),
     );
   }
+}
+
+function performSyncWorkOnRoot(root) {
+  // 获取最高优先级的lane
+  const lanes = getNextLanes(root);
+  // 渲染新Fiber树
+  renderRootSync(root, lanes);
+  // 获取新的渲染完成的Fiber根节点
+  const finishedWork = root.current.alternate;
+  root.finishedWork = finishedWork;
+  commitRoot(root);
+  // 如果没有任务了,必须返回null(因为有一个循环根据返回值跳出)
+  return null;
 }
 
 /**
@@ -176,8 +194,17 @@ function flushPassiveEffects() {
   }
 }
 
-// 要注意,一个父结点如果是新的,那么其所有子结点都没有副作用,因为创建之后都已经挂在父结点DOM上了.因此这种情况下只有父结点有副作用
 function commitRoot(root) {
+  const previousUpdatePriority = getCurrentUpdatePriority();
+  try {
+    setCurrentUpdatePriority(DiscreteEventPriority);
+    commitRootImpl(root);
+  } finally {
+    setCurrentUpdatePriority(previousUpdatePriority);
+  }
+}
+// 要注意,一个父结点如果是新的,那么其所有子结点都没有副作用,因为创建之后都已经挂在父结点DOM上了.因此这种情况下只有父结点有副作用
+function commitRootImpl(root) {
   const { finishedWork } = root;
   if (
     (finishedWork.subtreeFlags & Passive) !== NoFlags ||

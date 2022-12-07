@@ -1,5 +1,5 @@
 import ReactSharedInternals from 'shared/ReactSharedInternals';
-import { scheduleUpdateOnFiber } from './ReactFiberWorkLoop';
+import { requestUpdateLane, scheduleUpdateOnFiber } from './ReactFiberWorkLoop';
 import { enqueueConcurrentHookUpdate } from './ReactFiberConcurrentUpdates';
 import { Passive as PassiveEffect, Update as UpdateEffect } from './ReactFiberFlags';
 import {
@@ -146,7 +146,10 @@ function dispatchReducerAction(fiber, queue, action) {
   scheduleUpdateOnFiber(root);
 }
 function dispatchSetState(fiber, queue, action) {
+  // 获取当前的更新车道
+  const lane = requestUpdateLane();
   const update = {
+    lane,
     action,
     hasEagerState: false,
     eagerState: null,
@@ -160,8 +163,8 @@ function dispatchSetState(fiber, queue, action) {
   if (is(eagerState, currentState)) {
     return;
   }
-  const root = enqueueConcurrentHookUpdate(fiber, queue, update);
-  scheduleUpdateOnFiber(root, fiber);
+  const root = enqueueConcurrentHookUpdate(fiber, queue, update, lane);
+  scheduleUpdateOnFiber(root, fiber, lane);
 }
 
 function mountEffect(create, deps) {
