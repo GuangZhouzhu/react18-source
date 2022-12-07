@@ -4,7 +4,12 @@ import { createRoot } from 'react-dom/client';
 function FunctionComponent() {
   const [numbers, setNumbers] = useState(new Array(10).fill('A'));
   const divRef = useRef();
-  console.log(divRef);
+  useEffect(() => {
+    setTimeout(() => {
+      divRef.current.click();
+    }, 10);
+    setNumbers((numbers) => numbers.map((item) => item + 'B'));
+  }, []);
   return (
     <div
       ref={divRef}

@@ -163,8 +163,14 @@ function shouldYieldToHost() {
   return true;
 }
 
+function unstable_cancelCallback(task) {
+  task.callback = null;
+}
+
 export {
   NormalPriority as unstable_NormalPriority,
   unstable_scheduleCallback,
   shouldYieldToHost as unstable_shouldYield,
+  unstable_cancelCallback,
+  getCurrentTime as unstable_now,
 };

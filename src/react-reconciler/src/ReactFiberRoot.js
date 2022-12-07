@@ -1,11 +1,13 @@
 import { createHostRootFiber } from './ReactFiber';
 import { initializeUpdateQueue } from './ReactFiberClassUpdateQueue';
-import { NoLanes } from './ReactFiberLane';
+import { NoLane, NoLanes } from './ReactFiberLane';
 
 function FiberRootNode(containerInfo) {
   this.containerInfo = containerInfo;
   // 此根上有哪些车道等待被处理
   this.pendingLanes = NoLanes;
+  this.callbackNode = null;
+  this.callbackPriority = NoLane;
 }
 
 export function createFiberRoot(containerInfo) {

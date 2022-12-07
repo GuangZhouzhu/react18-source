@@ -59,12 +59,20 @@ export function markRootUpdated(root, updateLane) {
   root.pendingLanes |= updateLane;
 }
 
-export function getNextLanes(root) {
+export function getNextLanes(root, wipLanes) {
+  // 获取所有根上的车道
   const pendingLanes = root.pendingLanes;
   if (pendingLanes === NoLanes) {
     return NoLanes;
   }
+  // 获取所有车道中优先级最高的车道
   const nextLanes = getHighestPriorityLanes(pendingLanes);
+  if (wipLanes !== NoLanes && wipLanes !== nextLanes) {
+    // 如果新的车道值比渲染中的车道大,说明新车道优先级更低
+    if (nextLanes >= wipLanes) {
+      return wipLanes;
+    }
+  }
   return nextLanes;
 }
 

@@ -5,6 +5,7 @@ import {
   IdlePriority as IdleSchedulerPriority,
   scheduleCallback as Scheduler_scheduleCallback,
   shouldYield,
+  cancelCallback as Scheduler_cancelCallback,
 } from './Scheduler';
 import { createWorkInProgress } from './ReactFiber';
 import { beginWork } from './ReactFiberBeginWork';
@@ -68,8 +69,13 @@ export function scheduleUpdateOnFiber(root, fiber, lane) {
 }
 
 function ensureRootIsScheduled(root) {
+  // 先获取当前根上执行的任务
+  const existingCallbackNode = root.callbackNode;
   // 获取当前优先级最高的车道
-  const nextLanes = getNextLanes(root, NoLanes);
+  const nextLanes = getNextLanes(
+    root,
+    root === workInProgressRoot ? workInProgressRootRenderLanes : NoLanes,
+  );
   // 如果没有要执行的任务
   if (nextLanes === NoLanes) {
     root.callbackNode = null;
@@ -84,8 +90,11 @@ function ensureRootIsScheduled(root) {
   if (existingCallbackPriority === newCallbackPriority) {
     return;
   }
+  if (existingCallbackNode !== null) {
+    Scheduler_cancelCallback(existingCallbackNode);
+  }
   // 新的回调任务
-  let newCallbackNode;
+  let newCallbackNode = null;
   // 如果新的优先级是同步的话
   if (newCallbackPriority === SyncLane) {
     // 先把performSyncWorkOnRoot添加到同步队列中
@@ -187,7 +196,7 @@ function renderRootConcurrent(root, lanes) {
 
 function workLoopConcurrent() {
   while (workInProgress !== null && !shouldYield()) {
-    sleep(6);
+    sleep(50);
     performUnitOfWork(workInProgress);
     console.log('shouldYield()', shouldYield(), workInProgress?.type);
   }
