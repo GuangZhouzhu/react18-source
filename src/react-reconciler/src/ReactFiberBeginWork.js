@@ -6,7 +6,7 @@ import {
   IndeterminateComponent,
   FunctionComponent,
 } from './ReactWorkTags';
-import { processUpdateQueue } from './ReactFiberClassUpdateQueue';
+import { processUpdateQueue, cloneUpdateQueue } from './ReactFiberClassUpdateQueue';
 import { mountChildFibers, reconcileChildrenFibers } from './ReactChildFiber';
 import { shouldSetTextContent } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
 import { renderWithHooks } from './ReactFiberHooks';
@@ -28,9 +28,11 @@ function reconcileChildren(current, workInProgress, nextChildren) {
   }
 }
 
-function updateHostRoot(current, workInProgress) {
+function updateHostRoot(current, workInProgress, renderLanes) {
+  const nextProps = workInProgress.pendingProps;
+  cloneUpdateQueue(current, workInProgress);
   // 此方法会赋值: workInProgress.memoizedState = {element}
-  processUpdateQueue(workInProgress);
+  processUpdateQueue(workInProgress, nextProps, renderLanes);
   const nextState = workInProgress.memoizedState;
   // 新的子虚拟DOM
   const nextChildren = nextState.element;
@@ -71,8 +73,20 @@ function mountIndeterminateComponent(current, workInProgress, Component) {
   return workInProgress.child;
 }
 
-function updateFunctionComponent(current, workInProgress, Component, nextProps) {
-  const nextChildren = renderWithHooks(current, workInProgress, Component, nextProps);
+function updateFunctionComponent(
+  current,
+  workInProgress,
+  Component,
+  nextProps,
+  workInProgressRootRenderLanes,
+) {
+  const nextChildren = renderWithHooks(
+    current,
+    workInProgress,
+    Component,
+    nextProps,
+    workInProgressRootRenderLanes,
+  );
   reconcileChildren(current, workInProgress, nextChildren);
   return workInProgress.child;
 }
@@ -83,28 +97,24 @@ function updateFunctionComponent(current, workInProgress, Component, nextProps) 
  * @param {*} workInProgress 新Fiber
  * @returns
  */
-export function beginWork(current, workInProgress) {
-  logger(' '.repeat(indent.number) + 'beginWork', workInProgress);
-  indent.number += 2;
+export function beginWork(current, workInProgress, renderLanes) {
   switch (workInProgress.tag) {
     case HostRoot: {
-      return updateHostRoot(current, workInProgress);
+      return updateHostRoot(current, workInProgress, renderLanes);
     }
     case HostComponent: {
-      return updateHostComponent(current, workInProgress);
-    }
-    case HostText: {
-      return null;
+      return updateHostComponent(current, workInProgress, renderLanes);
     }
     // 处理函数组件和类组件,在这里还区分不了具体是函数组件还是类组件,因此先用这个类型判断
     case IndeterminateComponent: {
-      return mountIndeterminateComponent(current, workInProgress, workInProgress.type);
+      return mountIndeterminateComponent(current, workInProgress, workInProgress.type, renderLanes);
     }
     case FunctionComponent: {
       const Component = workInProgress.type;
       const nextProps = workInProgress.pendingProps;
-      return updateFunctionComponent(current, workInProgress, Component, nextProps);
+      return updateFunctionComponent(current, workInProgress, Component, nextProps, renderLanes);
     }
+    case HostText:
     default: {
       return null;
     }

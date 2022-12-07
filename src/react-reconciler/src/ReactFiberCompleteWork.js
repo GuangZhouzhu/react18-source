@@ -85,8 +85,6 @@ function markUpdate(workInProgress) {
  * @param {*} workInProgress 新构建的Fiber
  */
 export function completeWork(current, workInProgress) {
-  indent.number -= 2;
-  logger(' '.repeat(indent.number) + 'completeWork', workInProgress);
   const newProps = workInProgress.pendingProps;
   switch (workInProgress.tag) {
     case HostComponent: {

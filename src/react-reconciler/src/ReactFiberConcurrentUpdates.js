@@ -1,27 +1,27 @@
 import { HostRoot } from './ReactWorkTags';
 
-const concurrentQueue = [];
+const concurrentQueues = [];
 let concurrentQueuesIndex = 0;
 
-/**
- * 本来此方法要处理更新优先级的问题
- * 目前暂时只实现向上找到根节点的逻辑
- * @param {*} sourceFiber
- * @returns
- */
-export function markUpdateLaneFromFiberToRoot(sourceFiber) {
-  let node = sourceFiber;
-  let parent = sourceFiber.return;
-  while (parent !== null) {
-    node = parent;
-    parent = parent.return;
-  }
-  if (node.tag === HostRoot) {
-    const root = node.stateNode;
-    return root;
-  }
-  return null;
-}
+// /**
+//  * 本来此方法要处理更新优先级的问题
+//  * 目前暂时只实现向上找到根节点的逻辑
+//  * @param {*} sourceFiber
+//  * @returns
+//  */
+// export function markUpdateLaneFromFiberToRoot(sourceFiber) {
+//   let node = sourceFiber;
+//   let parent = sourceFiber.return;
+//   while (parent !== null) {
+//     node = parent;
+//     parent = parent.return;
+//   }
+//   if (node.tag === HostRoot) {
+//     const root = node.stateNode;
+//     return root;
+//   }
+//   return null;
+// }
 
 /**
  * 把hook的更新对象添加到hook的更新队列中
@@ -29,8 +29,8 @@ export function markUpdateLaneFromFiberToRoot(sourceFiber) {
  * @param {*} queue 要更新的hook对应的更新队列
  * @param {*} update 更新对象
  */
-export function enqueueConcurrentHookUpdate(fiber, queue, update) {
-  enqueueUpdate(fiber, queue, update);
+export function enqueueConcurrentHookUpdate(fiber, queue, update, lane) {
+  enqueueUpdate(fiber, queue, update, lane);
   return getRootForUpdatedFiber(fiber);
 }
 
@@ -40,10 +40,11 @@ export function enqueueConcurrentHookUpdate(fiber, queue, update) {
  * @param {*} queue
  * @param {*} update
  */
-function enqueueUpdate(fiber, queue, update) {
-  concurrentQueue[concurrentQueuesIndex++] = fiber;
-  concurrentQueue[concurrentQueuesIndex++] = queue;
-  concurrentQueue[concurrentQueuesIndex++] = update;
+function enqueueUpdate(fiber, queue, update, lane) {
+  concurrentQueues[concurrentQueuesIndex++] = fiber;
+  concurrentQueues[concurrentQueuesIndex++] = queue;
+  concurrentQueues[concurrentQueuesIndex++] = update;
+  concurrentQueues[concurrentQueuesIndex++] = lane;
 }
 
 function getRootForUpdatedFiber(sourceFiber) {
@@ -61,9 +62,10 @@ export function finishQueueingConcurrentUpdates() {
   concurrentQueuesIndex = 0;
   let i = 0;
   while (i < endIndex) {
-    const fiber = concurrentQueue[i++];
-    const queue = concurrentQueue[i++];
-    const update = concurrentQueue[i++];
+    const fiber = concurrentQueues[i++];
+    const queue = concurrentQueues[i++];
+    const update = concurrentQueues[i++];
+    const lane = concurrentQueues[i++];
     if (queue !== null && update !== null) {
       const pending = queue.pending;
       if (pending === null) {
@@ -75,4 +77,16 @@ export function finishQueueingConcurrentUpdates() {
       queue.pending = update;
     }
   }
+}
+
+/**
+ * 把更新入队
+ * @param {*} fiber 入队的Fiber(RootFiber)
+ * @param {*} queue sharedQueue
+ * @param {*} update 待入队的更新
+ * @param {*} lane 此更新的车道
+ */
+export function enqueueConcurrentClassUpdate(fiber, queue, update, lane) {
+  enqueueUpdate(fiber, queue, update, lane);
+  return getRootForUpdatedFiber(fiber);
 }
