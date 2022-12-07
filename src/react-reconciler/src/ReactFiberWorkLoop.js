@@ -78,6 +78,12 @@ function ensureRootIsScheduled(root) {
   }
   // 获取新的调度优先级
   const newCallbackPriority = getHighestPriorityLane(nextLanes);
+  // 获取现在根上正在运行的优先级
+  const existingCallbackPriority = root.callbackPriority;
+  // 如果新的优先级和老的优先级一样,则可以进行批量更新
+  if (existingCallbackPriority === newCallbackPriority) {
+    return;
+  }
   // 新的回调任务
   let newCallbackNode;
   // 如果新的优先级是同步的话
@@ -113,6 +119,7 @@ function ensureRootIsScheduled(root) {
       performConcurrentWorkOnRoot.bind(null, root),
     );
   }
+  root.callbackPriority = newCallbackPriority;
   root.callbackNode = newCallbackNode;
 }
 

@@ -8,6 +8,7 @@ import {
   Layout as HookLayout,
 } from './ReactHookEffectTags';
 import is from 'shared/objectIs';
+import { NoLanes } from './ReactFiberLane';
 
 const { ReactCurrentDispatcher } = ReactSharedInternals;
 let currentlyRenderingFiber = null;
@@ -155,13 +156,16 @@ function dispatchSetState(fiber, queue, action) {
     eagerState: null,
     next: null,
   };
-  // 当用useState派发动作后,立刻用上一次的状态和上一次的reducer计算新状态,如果一样就不更新了
-  const { lastRenderedReducer, lastRenderedState: currentState } = queue;
-  const eagerState = lastRenderedReducer(currentState, action);
-  update.hasEagerState = true;
-  update.eagerState = eagerState;
-  if (is(eagerState, currentState)) {
-    return;
+  const alternate = fiber.alternate;
+  if (fiber.lanes === NoLanes && (alternate === null || alternate.lanes === NoLanes)) {
+    // 当用useState派发动作后,立刻用上一次的状态和上一次的reducer计算新状态,如果一样就不更新了
+    const { lastRenderedReducer, lastRenderedState: currentState } = queue;
+    const eagerState = lastRenderedReducer(currentState, action);
+    update.hasEagerState = true;
+    update.eagerState = eagerState;
+    if (is(eagerState, currentState)) {
+      return;
+    }
   }
   const root = enqueueConcurrentHookUpdate(fiber, queue, update, lane);
   scheduleUpdateOnFiber(root, fiber, lane);

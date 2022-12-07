@@ -6,10 +6,12 @@ function FunctionComponent() {
   const [number, setNumber] = useState(0);
   useEffect(() => {
     setNumber((number) => number + 1);
+    setNumber((number) => number + 1);
   }, []);
   return (
     <button
       onClick={() => {
+        setNumber((number) => number + 1);
         setNumber((number) => number + 1);
       }}
     >
@@ -17,6 +19,7 @@ function FunctionComponent() {
     </button>
   );
 }
+
 let element = <FunctionComponent />;
 
 const root = createRoot(document.getElementById('root'));
