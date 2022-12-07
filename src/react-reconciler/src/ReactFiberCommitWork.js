@@ -4,7 +4,7 @@ import {
   commitUpdate,
   removeChild,
 } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
-import { LayoutMask, MutationMask, Passive, Placement, Update } from './ReactFiberFlags';
+import { LayoutMask, MutationMask, Passive, Placement, Ref, Update } from './ReactFiberFlags';
 import { HostComponent, HostRoot, HostText, FunctionComponent } from './ReactWorkTags';
 import {
   HasEffect as HookHasEffect,
@@ -43,6 +43,9 @@ export function commitMutationEffectsOnFiber(finishedWork, root) {
       recursivelyTraverseMutationEffects(root, finishedWork);
       // 再处理自己的副作用
       commitReconciliationEffects(finishedWork);
+      if (flags & Ref) {
+        commitAttachRef(finishedWork);
+      }
       // 处理DOM更新
       if (flags & Update) {
         const instance = finishedWork.stateNode;
@@ -413,4 +416,16 @@ function recursivelyTraverseLayoutEffects(root, parentFiber) {
 
 function commitHookLayoutEffects(finishedWork, hookFlags) {
   commitHookEffectListMount(hookFlags, finishedWork);
+}
+
+function commitAttachRef(finishedWork) {
+  const ref = finishedWork.ref;
+  if (ref !== null) {
+    const instance = finishedWork.stateNode;
+    if (typeof ref === 'function') {
+      ref(instance);
+    } else {
+      ref.current = instance;
+    }
+  }
 }

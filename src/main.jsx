@@ -1,22 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 function FunctionComponent() {
-  console.log('FunctionComponent');
-  const [number, setNumber] = useState(0);
-  useEffect(() => {
-    setNumber((number) => number + 1);
-    setNumber((number) => number + 1);
-  }, []);
+  const [numbers, setNumbers] = useState(new Array(10).fill('A'));
+  const divRef = useRef();
+  console.log(divRef);
   return (
-    <button
+    <div
+      ref={divRef}
       onClick={() => {
-        setNumber((number) => number + 1);
-        setNumber((number) => number + 1);
+        setNumbers((numbers) => numbers.map((item) => item + 'C'));
       }}
     >
-      {number}
-    </button>
+      {numbers.map((number, index) => (
+        <span key={index}>{number}</span>
+      ))}
+    </div>
   );
 }
 

@@ -19,12 +19,14 @@ const HooksDispatcherOnMount = {
   useState: mountState,
   useEffect: mountEffect,
   useLayoutEffect: mountLayoutEffect,
+  useRef: mountRef,
 };
 const HooksDispatcherOnUpdate = {
   useReducer: updateReducer,
   useState: updateState,
   useEffect: updateEffect,
   useLayoutEffect: updateLayoutEffect,
+  useRef: updateRef,
 };
 // useState其实就是一个内置了reducer的useReducer
 function basicStateReducer(state, action) {
@@ -266,6 +268,19 @@ function mountLayoutEffect(create, deps) {
 
 function updateLayoutEffect(create, deps) {
   return updateEffectImpl(UpdateEffect, HookLayout, create, deps);
+}
+
+function mountRef(initialValue) {
+  const hook = mountWorkInProgressHook();
+  const ref = {
+    current: initialValue,
+  };
+  hook.memoizedState = ref;
+  return ref;
+}
+function updateRef() {
+  const hook = updateWorkInProgressHook();
+  return hook.memoizedState;
 }
 
 /**

@@ -7,7 +7,7 @@ import {
   finalizeInitialChildren,
   prepareUpdate,
 } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
-import { NoFlags, Update } from './ReactFiberFlags';
+import { NoFlags, Ref, Update } from './ReactFiberFlags';
 
 function bubbleProperties(completedWork) {
   let subtreeFlags = NoFlags;
@@ -79,6 +79,10 @@ function markUpdate(workInProgress) {
   workInProgress.flags |= Update;
 }
 
+function markRef(workInProgress) {
+  workInProgress.flags |= Ref;
+}
+
 /**
  * 完成一个Fiber结点
  * @param {*} current 老Fiber
@@ -93,6 +97,9 @@ export function completeWork(current, workInProgress) {
       // 如果老Fiber存在,且老Fiber上有真实DOM结点,要走结点更新逻辑
       if (current !== null && workInProgress.stateNode !== null) {
         updateHostComponent(current, workInProgress, type, newProps);
+        if (current.ref !== workInProgress.ref) {
+          markRef(workInProgress);
+        }
       } else {
         // 初次挂载
         const instance = createInstance(type, newProps, workInProgress);
@@ -100,6 +107,9 @@ export function completeWork(current, workInProgress) {
         appendAllChildren(instance, workInProgress);
         workInProgress.stateNode = instance;
         finalizeInitialChildren(instance, type, newProps);
+        if (workInProgress.ref !== null) {
+          markRef(workInProgress);
+        }
       }
       bubbleProperties(workInProgress);
       break;
