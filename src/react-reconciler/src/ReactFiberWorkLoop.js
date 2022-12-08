@@ -6,6 +6,7 @@ import {
   scheduleCallback as Scheduler_scheduleCallback,
   shouldYield,
   cancelCallback as Scheduler_cancelCallback,
+  now,
 } from './Scheduler';
 import { createWorkInProgress } from './ReactFiber';
 import { beginWork } from './ReactFiberBeginWork';
@@ -17,7 +18,6 @@ import {
   commitPassiveUnmountEffects,
   commitLayoutEffects,
 } from './ReactFiberCommitWork';
-import { printFiber } from 'shared/logger';
 import { finishQueueingConcurrentUpdates } from './ReactFiberConcurrentUpdates';
 import {
   getHighestPriorityLane,
@@ -27,6 +27,11 @@ import {
   NoLanes,
   SyncLane,
   includesBlockingLane,
+  markStarvedLanesAsExpired,
+  NoTimestamp,
+  includesExpiredLane,
+  mergeLanes,
+  markRootFinished,
 } from './ReactFiberLane';
 import {
   getCurrentUpdatePriority,
@@ -56,21 +61,25 @@ let workInProgressRoot = null;
 // 当渲染工作停止(结束或者暂停)时,当前的Fiber树处于什么状态(默认是进行中的状态)
 // 因为是并发渲染,那么渲染工作可能会暂停,所以需要该变量记录当前Fiber树的构建状态
 let workInProgressRootExitStatus = RootInProgress;
+// 保存当前处理事件发生的时间
+let currentEventTime = NoTimestamp;
 
 /**
  * 计划更新root
  * 调度任务
  * @param {*} root
  */
-export function scheduleUpdateOnFiber(root, fiber, lane) {
+export function scheduleUpdateOnFiber(root, fiber, lane, eventTime) {
   markRootUpdated(root, lane);
   // 确保调度执行root上的更新
-  ensureRootIsScheduled(root);
+  ensureRootIsScheduled(root, eventTime);
 }
 
-function ensureRootIsScheduled(root) {
+function ensureRootIsScheduled(root, currentTime) {
   // 先获取当前根上执行的任务
   const existingCallbackNode = root.callbackNode;
+  // 把所有饿死的车道标记为过期
+  markStarvedLanesAsExpired(root, currentTime);
   // 获取当前优先级最高的车道
   const nextLanes = getNextLanes(
     root,
@@ -91,6 +100,7 @@ function ensureRootIsScheduled(root) {
     return;
   }
   if (existingCallbackNode !== null) {
+    console.log('cancelCallback');
     Scheduler_cancelCallback(existingCallbackNode);
   }
   // 新的回调任务
@@ -157,8 +167,14 @@ function performConcurrentWorkOnRoot(root, didTimeout) {
   if (lanes === NoLanes) {
     return null;
   }
-  // 如果不包含阻塞车道,并且没有超时,就可以并行渲染,需要启用时间分片
-  const shouldTimeSlice = !includesBlockingLane(root, lanes) && !didTimeout;
+  // 是否不包含阻塞车道
+  const nonIncludesBlockingLane = !includesBlockingLane(root, lanes);
+  // 是否不包含过期车道
+  const nonIncludesExpiredLane = !includesExpiredLane(root, lanes);
+  // 是否时间片没有过期
+  const nonTimeout = !didTimeout;
+  // 如果不包含阻塞车道,不包含过期车道,并且时间片没有超时,才可以并行渲染,需要启用时间分片
+  const shouldTimeSlice = nonIncludesBlockingLane && nonIncludesExpiredLane && nonTimeout;
   const exitStatus = shouldTimeSlice
     ? renderRootConcurrent(root, lanes)
     : renderRootSync(root, lanes);
@@ -196,9 +212,8 @@ function renderRootConcurrent(root, lanes) {
 
 function workLoopConcurrent() {
   while (workInProgress !== null && !shouldYield()) {
-    sleep(50);
+    sleep(5);
     performUnitOfWork(workInProgress);
-    console.log('shouldYield()', shouldYield(), workInProgress?.type);
   }
 }
 
@@ -283,10 +298,14 @@ function commitRoot(root) {
 // 要注意,一个父结点如果是新的,那么其所有子结点都没有副作用,因为创建之后都已经挂在父结点DOM上了.因此这种情况下只有父结点有副作用
 function commitRootImpl(root) {
   const { finishedWork } = root;
+  console.log('commit', finishedWork.child.memoizedState.memoizedState[0]);
   root.callbackNode = null;
   root.callbackPriority = NoLane;
   workInProgressRoot = null;
   workInProgressRootRenderLanes = NoLanes;
+  // 合并统计当前新的根上剩下的车道
+  const remainingLanes = mergeLanes(finishedWork.lanes, finishedWork.childLanes);
+  markRootFinished(root, remainingLanes);
   if (
     (finishedWork.subtreeFlags & Passive) !== NoFlags ||
     (finishedWork.flags & Passive) !== NoFlags
@@ -311,6 +330,8 @@ function commitRootImpl(root) {
   }
   // DOM变更后,就可以把root的current指向新的Fiber数(即current与workInProgress交换)
   root.current = finishedWork;
+  // 提交后,因为根上可能会有跳过的更新,所以需要重新调度
+  ensureRootIsScheduled(root, now());
 }
 
 export function requestUpdateLane() {
@@ -320,6 +341,12 @@ export function requestUpdateLane() {
   }
   const eventLane = getCurrentEventPriority();
   return eventLane;
+}
+
+// 请求当前的时间
+export function requestEventTime() {
+  currentEventTime = now();
+  return currentEventTime;
 }
 
 // 为了查看并发过程写的方法(源码中没有,可以忽略)

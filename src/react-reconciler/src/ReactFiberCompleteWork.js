@@ -1,4 +1,3 @@
-import logger, { indent } from 'shared/logger';
 import { HostRoot, HostComponent, HostText, FunctionComponent } from './ReactWorkTags';
 import {
   createTextInstance,
@@ -8,16 +7,20 @@ import {
   prepareUpdate,
 } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
 import { NoFlags, Ref, Update } from './ReactFiberFlags';
+import { mergeLanes, NoLanes } from './ReactFiberLane';
 
 function bubbleProperties(completedWork) {
+  let newChildLanes = NoLanes;
   let subtreeFlags = NoFlags;
   // 遍历当前Fiber的所有子结点,把所有子结点的副作用,以及孙子结点的副作用,全部合并subtreeFlags变量
   let child = completedWork.child;
   while (child !== null) {
+    newChildLanes = mergeLanes(newChildLanes, mergeLanes(child.lanes, child.childLanes));
     subtreeFlags |= child.subtreeFlags;
     subtreeFlags |= child.flags;
     child = child.sibling;
   }
+  completedWork.childLanes = newChildLanes;
   completedWork.subtreeFlags |= subtreeFlags;
 }
 

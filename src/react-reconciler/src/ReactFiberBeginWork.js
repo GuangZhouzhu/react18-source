@@ -1,4 +1,3 @@
-import logger, { indent } from 'shared/logger';
 import {
   HostRoot,
   HostComponent,
@@ -73,20 +72,8 @@ function mountIndeterminateComponent(current, workInProgress, Component) {
   return workInProgress.child;
 }
 
-function updateFunctionComponent(
-  current,
-  workInProgress,
-  Component,
-  nextProps,
-  workInProgressRootRenderLanes,
-) {
-  const nextChildren = renderWithHooks(
-    current,
-    workInProgress,
-    Component,
-    nextProps,
-    workInProgressRootRenderLanes,
-  );
+function updateFunctionComponent(current, workInProgress, Component, nextProps, renderLanes) {
+  const nextChildren = renderWithHooks(current, workInProgress, Component, nextProps, renderLanes);
   reconcileChildren(current, workInProgress, nextChildren);
   return workInProgress.child;
 }
@@ -98,6 +85,8 @@ function updateFunctionComponent(
  * @returns
  */
 export function beginWork(current, workInProgress, renderLanes) {
+  // 在构建Fiber树前,先清空当前Fiber的lanes
+  workInProgress.lanes = 0;
   switch (workInProgress.tag) {
     case HostRoot: {
       return updateHostRoot(current, workInProgress, renderLanes);

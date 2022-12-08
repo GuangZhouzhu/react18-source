@@ -1,5 +1,6 @@
 import { HostComponent, HostRoot, HostText, IndeterminateComponent } from './ReactWorkTags';
 import { NoFlags } from './ReactFiberFlags';
+import { NoLanes } from './ReactFiberLane';
 
 /**
  *
@@ -49,6 +50,8 @@ export function FiberNode(tag, pendingProps, key) {
   // 存放将要删除的子Fiber
   this.deletions = null;
   this.ref = null;
+  this.lanes = NoLanes;
+  this.childLanes = NoLanes;
 }
 
 export function createFiber(tag, pendingProps, key) {
@@ -77,6 +80,7 @@ export function createWorkInProgress(current, pendingProps) {
     workInProgress.type = current.type;
     workInProgress.flags = NoFlags;
     workInProgress.subtreeFlags = NoFlags;
+    workInProgress.deletions = null;
   }
   workInProgress.child = current.child;
   workInProgress.memoizedProps = current.memoizedProps;
@@ -85,6 +89,9 @@ export function createWorkInProgress(current, pendingProps) {
   workInProgress.sibling = current.sibling;
   workInProgress.index = current.index;
   workInProgress.ref = current.ref;
+  workInProgress.flags = current.flags;
+  workInProgress.lanes = current.lanes;
+  workInProgress.childLanes = current.childLanes;
   return workInProgress;
 }
 

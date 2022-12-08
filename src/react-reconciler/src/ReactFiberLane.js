@@ -50,6 +50,9 @@ export const IdleLane = /*                        */ 0b0100000000000000000000000
 
 export const OffscreenLane = /*                   */ 0b1000000000000000000000000000000;
 
+// 没有时间戳
+export const NoTimestamp = -1;
+
 export function mergeLanes(a, b) {
   return a | b;
 }
@@ -96,4 +99,74 @@ export function includesBlockingLane(root, lanes) {
 }
 export function isSubsetOfLanes(set, subset) {
   return (set & subset) === subset;
+}
+
+export function markStarvedLanesAsExpired(root, currentTime) {
+  // 获取当前有更新的车道
+  const pendingLanes = root.pendingLanes;
+  // 获取过期车道时间数组
+  const expirationTimes = root.expirationTimes;
+  let lanes = pendingLanes;
+  while (lanes > 0) {
+    const index = pickArbitraryLaneIndex(lanes);
+    const lane = 1 << index;
+    const expirationTime = expirationTimes[index];
+    // 如果此车道上没有过期时间,说明没有给此车道设置过期时间,那么需要计算一个过期时间给该车道
+    if (expirationTime === NoTimestamp) {
+      expirationTimes[index] = computeExpirationTime(lane, currentTime);
+    } else if (expirationTime <= currentTime) {
+      // 如果此车道的时间已经小于当前时间,把此车道加入过期车道集合
+      root.expiredLanes |= lane;
+    }
+    lanes &= ~lane;
+  }
+}
+
+// 获取32位数中,最左侧1的索引
+function pickArbitraryLaneIndex(lanes) {
+  return 31 - Math.clz32(lanes);
+}
+
+function computeExpirationTime(lane, currentTime) {
+  switch (lane) {
+    case SyncLane:
+    case InputContinuousLane: {
+      return currentTime + 250;
+    }
+    case DefaultLane: {
+      return currentTime + 5000;
+    }
+    case IdleLane: {
+      return NoTimestamp;
+    }
+    default: {
+      return NoTimestamp;
+    }
+  }
+}
+
+export function createLaneMap(initial) {
+  const laneMap = [];
+  for (let i = 0; i < TotalLanes; i++) {
+    laneMap.push(initial);
+  }
+  return laneMap;
+}
+
+export function includesExpiredLane(root, lanes) {
+  return (lanes & root.expiredLanes) !== NoLanes;
+}
+
+export function markRootFinished(root, remainingLanes) {
+  // 已经更新过的lane
+  const noLongerPendingLanes = root.pendingLanes & ~remainingLanes;
+  root.pendingLanes = remainingLanes;
+  let lanes = noLongerPendingLanes;
+  const expirationTimes = root.expirationTimes;
+  while (lanes > 0) {
+    const index = pickArbitraryLaneIndex(lanes);
+    const lane = 1 << index;
+    expirationTimes[index] = NoTimestamp;
+    lanes &= ~lane;
+  }
 }
