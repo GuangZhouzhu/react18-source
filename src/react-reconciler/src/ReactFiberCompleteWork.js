@@ -1,4 +1,10 @@
-import { HostRoot, HostComponent, HostText, FunctionComponent } from './ReactWorkTags';
+import {
+  HostRoot,
+  HostComponent,
+  HostText,
+  FunctionComponent,
+  ContextProvider,
+} from './ReactWorkTags';
 import {
   createTextInstance,
   createInstance,
@@ -131,6 +137,10 @@ export function completeWork(current, workInProgress) {
       break;
     }
     case FunctionComponent: {
+      bubbleProperties(workInProgress);
+      break;
+    }
+    case ContextProvider: {
       bubbleProperties(workInProgress);
       break;
     }

@@ -9,6 +9,7 @@ import {
 } from './ReactHookEffectTags';
 import is from 'shared/objectIs';
 import { isSubsetOfLanes, mergeLanes, NoLane, NoLanes } from './ReactFiberLane';
+import { readContext } from './ReactFiberNewContext';
 
 const { ReactCurrentDispatcher } = ReactSharedInternals;
 let currentlyRenderingFiber = null;
@@ -21,6 +22,7 @@ const HooksDispatcherOnMount = {
   useEffect: mountEffect,
   useLayoutEffect: mountLayoutEffect,
   useRef: mountRef,
+  useContext: readContext,
 };
 const HooksDispatcherOnUpdate = {
   useReducer: updateReducer,
@@ -28,6 +30,7 @@ const HooksDispatcherOnUpdate = {
   useEffect: updateEffect,
   useLayoutEffect: updateLayoutEffect,
   useRef: updateRef,
+  useContext: readContext,
 };
 // useState其实就是一个内置了reducer的useReducer
 function basicStateReducer(state, action) {

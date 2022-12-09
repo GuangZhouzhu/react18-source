@@ -34,3 +34,8 @@ export function useRef(initialValue) {
   const dispatcher = resolveDispatcher();
   return dispatcher.useRef(initialValue);
 }
+
+export function useContext(Context) {
+  const dispatcher = resolveDispatcher();
+  return dispatcher.useContext(Context);
+}

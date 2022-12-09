@@ -1,6 +1,13 @@
-import { HostComponent, HostRoot, HostText, IndeterminateComponent } from './ReactWorkTags';
+import {
+  ContextProvider,
+  HostComponent,
+  HostRoot,
+  HostText,
+  IndeterminateComponent,
+} from './ReactWorkTags';
 import { NoFlags } from './ReactFiberFlags';
 import { NoLanes } from './ReactFiberLane';
+import { REACT_PROVIDER_TYPE } from 'shared/ReactSymbols';
 
 /**
  *
@@ -100,6 +107,20 @@ function createFiberFromTypeAndProps(type, key, pendingProps) {
   // 如果类型type是一个字符串(如: div,p,span),则说明Fiber类型是一个原生组件
   if (typeof type === 'string') {
     fiberTag = HostComponent;
+  } else {
+    getTag: switch (type) {
+      default: {
+        if (typeof type === 'object' && type !== null) {
+          switch (type.$$typeof) {
+            case REACT_PROVIDER_TYPE:
+              fiberTag = ContextProvider;
+              break getTag;
+            default:
+              break;
+          }
+        }
+      }
+    }
   }
   const fiber = createFiber(fiberTag, pendingProps, key);
   fiber.type = type;

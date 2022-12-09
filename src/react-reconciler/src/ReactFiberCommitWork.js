@@ -5,7 +5,13 @@ import {
   removeChild,
 } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
 import { LayoutMask, MutationMask, Passive, Placement, Ref, Update } from './ReactFiberFlags';
-import { HostComponent, HostRoot, HostText, FunctionComponent } from './ReactWorkTags';
+import {
+  HostComponent,
+  HostRoot,
+  HostText,
+  FunctionComponent,
+  ContextProvider,
+} from './ReactWorkTags';
 import {
   HasEffect as HookHasEffect,
   Passive as HookPassive,
@@ -63,6 +69,11 @@ export function commitMutationEffectsOnFiber(finishedWork, root) {
       break;
     }
     case HostText: {
+      recursivelyTraverseMutationEffects(root, finishedWork);
+      commitReconciliationEffects(finishedWork);
+      break;
+    }
+    case ContextProvider: {
       recursivelyTraverseMutationEffects(root, finishedWork);
       commitReconciliationEffects(finishedWork);
       break;

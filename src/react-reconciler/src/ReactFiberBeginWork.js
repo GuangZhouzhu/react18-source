@@ -4,11 +4,13 @@ import {
   HostText,
   IndeterminateComponent,
   FunctionComponent,
+  ContextProvider,
 } from './ReactWorkTags';
 import { processUpdateQueue, cloneUpdateQueue } from './ReactFiberClassUpdateQueue';
 import { mountChildFibers, reconcileChildrenFibers } from './ReactChildFiber';
 import { shouldSetTextContent } from 'react-dom-bindings/src/client/ReactDOMHostConfig';
 import { renderWithHooks } from './ReactFiberHooks';
+import { pushProvider } from './ReactFiberNewContext';
 
 /**
  * 根据新的虚拟DOM,生成新的Fiber链表
@@ -78,6 +80,17 @@ function updateFunctionComponent(current, workInProgress, Component, nextProps, 
   return workInProgress.child;
 }
 
+function updateContextProvider(current, workInProgress, renderLanes) {
+  const providerType = workInProgress.type;
+  const context = providerType._context;
+  const newProps = workInProgress.pendingProps;
+  const newValue = newProps.value;
+  pushProvider(context, newValue);
+  const newChildren = newProps.children;
+  reconcileChildren(current, workInProgress, newChildren, renderLanes);
+  return workInProgress.child;
+}
+
 /**
  *  根据新虚拟DOM,构建新的Fiber子链表
  * @param {*} current 老Fiber
@@ -103,7 +116,12 @@ export function beginWork(current, workInProgress, renderLanes) {
       const nextProps = workInProgress.pendingProps;
       return updateFunctionComponent(current, workInProgress, Component, nextProps, renderLanes);
     }
-    case HostText:
+    case HostText: {
+      return null;
+    }
+    case ContextProvider: {
+      return updateContextProvider(current, workInProgress, renderLanes);
+    }
     default: {
       return null;
     }

@@ -5,4 +5,6 @@ export {
   useEffect,
   useLayoutEffect,
   useRef,
+  createContext,
+  useContext,
 } from './src/React';
