@@ -168,7 +168,11 @@ function unstable_cancelCallback(task) {
 }
 
 export {
+  ImmediatePriority as unstable_ImmediatePriority,
+  UserBlockingPriority as unstable_UserBlockingPriority,
   NormalPriority as unstable_NormalPriority,
+  IdlePriority as unstable_IdlePriority,
+  LowPriority as unstable_LowPriority,
   unstable_scheduleCallback,
   shouldYieldToHost as unstable_shouldYield,
   unstable_cancelCallback,

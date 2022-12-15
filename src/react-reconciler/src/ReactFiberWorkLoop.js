@@ -155,6 +155,15 @@ function performSyncWorkOnRoot(root) {
   return null;
 }
 
+function renderRootSync(root, lanes) {
+  //不是一个根，或者是当前和之前的执行车道不同,需要先初始化一下执行环境(做准备工作)
+  if (workInProgressRoot !== root || workInProgressRootRenderLanes !== lanes) {
+    prepareFreshStack(root, lanes);
+  }
+  workLoopSync();
+  return workInProgressRootExitStatus;
+}
+
 /**
  * 1. 根据虚拟DOM构建fiber树
  * 2. 创建真实的DOM节点
@@ -223,14 +232,7 @@ function prepareFreshStack(root, lanes) {
   workInProgressRootRenderLanes = lanes;
   finishQueueingConcurrentUpdates();
 }
-function renderRootSync(root, lanes) {
-  //不是一个根，或者是更高优先级的更新
-  if (workInProgressRoot !== root || workInProgressRootRenderLanes !== lanes) {
-    prepareFreshStack(root, lanes);
-  }
-  workLoopSync();
-  return workInProgressRootExitStatus;
-}
+
 function workLoopSync() {
   while (workInProgress !== null) {
     performUnitOfWork(workInProgress);
@@ -246,7 +248,7 @@ function performUnitOfWork(unitOfWork) {
   const next = beginWork(current, unitOfWork, workInProgressRootRenderLanes);
   unitOfWork.memoizedProps = unitOfWork.pendingProps;
   if (next === null) {
-    // 如果没有子结点了,则表示当期那的Fiber已经完成了
+    // 如果没有子结点了,则表示当前的Fiber已经完成了
     completeUnitOfWork(unitOfWork);
   } else {
     // 如果还有子结点,则让子结点成为下一个工作单元

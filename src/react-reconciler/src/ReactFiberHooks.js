@@ -263,7 +263,7 @@ function dispatchSetState(fiber, queue, action) {
 }
 
 function mountEffect(create, deps) {
-  return mountEffectImpl(PassiveEffect, HookPassive, create, deps);
+  mountEffectImpl(PassiveEffect, HookPassive, create, deps);
 }
 function mountEffectImpl(fiberFlags, hookFlags, create, deps) {
   const hook = mountWorkInProgressHook();

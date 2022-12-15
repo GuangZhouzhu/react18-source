@@ -1,5 +1,10 @@
 import ReactCurrentDispatcher from './ReactCurrentDispatcher';
 
+function resolveDispatcher() {
+  const dispatcher = ReactCurrentDispatcher.current;
+  return dispatcher;
+}
+
 /**
  *
  * @param {*} reducer 处理函数: 根据老状态和动作,计算新状态
@@ -8,11 +13,6 @@ import ReactCurrentDispatcher from './ReactCurrentDispatcher';
 export function useReducer(reducer, initialArg, init) {
   const dispatcher = resolveDispatcher();
   return dispatcher.useReducer(reducer, initialArg, init);
-}
-
-function resolveDispatcher() {
-  const dispatcher = ReactCurrentDispatcher.current;
-  return dispatcher;
 }
 
 export function useState(initialState) {

@@ -17,7 +17,7 @@ export function updateContainer(element, container) {
   const eventTime = requestEventTime();
   // 请求一个更新车道
   const lane = requestUpdateLane(current);
-  const update = createUpdate(lane);
+  const update = createUpdate(eventTime, lane);
   // 把要更新的虚拟DOM放进update里
   update.payload = { element };
   // 把此更新对象添加到current这个根Fiber的更新队列里

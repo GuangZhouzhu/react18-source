@@ -20,8 +20,8 @@ export function initializeUpdateQueue(fiber) {
   fiber.updateQueue = queue;
 }
 
-export function createUpdate(lane) {
-  const update = { tag: UpdateState, next: null, lane };
+export function createUpdate(eventTime, lane) {
+  const update = { tag: UpdateState, next: null, eventTime, lane };
   return update;
 }
 
@@ -142,8 +142,8 @@ export const processUpdateQueue = (workInProgress, props, workInProgressRootRend
         }
         // 根据更新计算新状态
         newState = getStateFromUpdate(update, newState, props);
-        update = update.next;
       }
+      update = update.next;
     } while (update);
     // 如果没有跳过的更新
     if (newLastBaseUpdate === null) {

@@ -66,9 +66,9 @@ function updateHostComponent(current, workInProgress) {
  * @param {*} workInProgress 新Fiber
  * @param {*} Component 组件类型: 也就是函数组件的定义
  */
-function mountIndeterminateComponent(current, workInProgress, Component) {
+function mountIndeterminateComponent(current, workInProgress, Component, renderLanes) {
   const props = workInProgress.pendingProps;
-  const value = renderWithHooks(current, workInProgress, Component, props);
+  const value = renderWithHooks(current, workInProgress, Component, props, renderLanes);
   workInProgress.tag = FunctionComponent;
   reconcileChildren(current, workInProgress, value);
   return workInProgress.child;
